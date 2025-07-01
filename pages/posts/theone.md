@@ -1,0 +1,31 @@
+---
+title: 学习日记说明
+date: 2025-07-01
+updated: 2025-07-01
+categories:
+  - 日记
+tags:
+  - 随笔
+top: 1
+---
+
+[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&pause=1000&width=435&lines=Happiness+Nightmare+Experience+-%E5%B0%BE%E5%B7%B4)](https://git.io/typing-svg)
+
+# | 🧠 学习笔记仓库
+
+> 📅 **学习开始时间：2025 年 4 月 22 日**  
+> ✍️ **更新日期：2025 年 6 月 30 日**
+
+---
+
+#### 自毁
+
+| 出于心中的某些执念，每天非常高强度的学习
+| 最后我一定会被击垮，放弃自己的梦想
+| 总是觉得不甘，所以就算拥抱死亡也… …
+
+#### 更新
+
+| 一般來說太忙的話就不會更新了...
+
+---

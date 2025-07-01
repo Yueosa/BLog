@@ -45,7 +45,7 @@ export default defineValaxyConfig<ThemeUserConfig>({
       randomUrls: true,
       // 首页视频
       playerUrl:
-        "https://raw.githubusercontent.com/Yueosa/ASCII_Video/refs/heads/main/video/video.mp4",
+        "video.mp4",
       style: "filter-grid",
       fixedImg: true,
       typewriter: true,

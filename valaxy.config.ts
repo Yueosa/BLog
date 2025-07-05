@@ -117,9 +117,15 @@ export default defineValaxyConfig<ThemeUserConfig>({
     scrollLock: false,
   },
 
+  siteConfig: {
+    comment: {
+      enable: true,
+    },
+  },
+
   addons: [
     addonWaline({
-      serverURL: "https://waline.wrxinyue.org",
+      serverURL: "https://waline-vercel-five-ebon.vercel.app/",
       pageview: true,
       comment: true,
     }),

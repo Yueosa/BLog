@@ -44,8 +44,7 @@ export default defineValaxyConfig<ThemeUserConfig>({
       ],
       randomUrls: true,
       // 首页视频
-      playerUrl:
-        "video.mp4",
+      playerUrl: "output.mp4",
       style: "filter-grid",
       fixedImg: true,
       typewriter: true,

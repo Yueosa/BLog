@@ -90,7 +90,7 @@ export default defineValaxyConfig<ThemeUserConfig>({
       // },
       {
         icon: "i-fa-edit",
-        text: "留言板",
+        text: "留言",
         link: "/comment",
       },
       {
@@ -100,8 +100,8 @@ export default defineValaxyConfig<ThemeUserConfig>({
       },
     ],
     navbarOptions: {
-      title: ["BLog", "Sakura"],
-      subTitle: "一个基于 valaxy 的 BLog",
+      title: ["BLog", "YukiKoi"],
+      subTitle: "这里是 Sakura 小姐的博客",
       offset: 0,
       invert: ["home"],
       showMarker: false,

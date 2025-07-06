@@ -1,14 +1,14 @@
 import { defineSiteConfig } from "valaxy";
 
 export default defineSiteConfig({
-  url: "https://yeastar.xin",
+  url: "https://blog.yeastar.xin",
   favicon: "/avatar.ico",
   lang: "zh-CN",
-  title: "Sakura BLog",
+  title: "YukiLog",
   author: {
     name: "Sakura",
   },
-  description: "Valaxy Theme Yun Preview.",
+  description: "一直一直喜欢你哦.",
   social: [
     {
       name: "QQ 群 970312342",

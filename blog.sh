@@ -49,5 +49,5 @@ echo "🔁 重新加载 nginx..."
 systemctl reload nginx
 echo "✅ Nginx 重载完毕"
 
-echo "🎉 [$NOW] 博客部署完成！访问blog.yeastar.xin查看"
+echo "🎉 [$NOW] 博客部署完成！访问地址: https://blog.yeastar.xin"
 

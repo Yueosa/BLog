@@ -2,6 +2,8 @@ import type { ThemeUserConfig } from "valaxy-theme-sakura";
 import { defineValaxyConfig } from "valaxy";
 import { addonMeting } from "valaxy-addon-meting";
 import { addonWaline } from "valaxy-addon-waline";
+import { addonBangumi } from "valaxy-addon-bangumi";
+import pkg from "valaxy-theme-sakura/package.json";
 
 export default defineValaxyConfig<ThemeUserConfig>({
   theme: "sakura",
@@ -41,9 +43,7 @@ export default defineValaxyConfig<ThemeUserConfig>({
       urls: [
         "https://valaxy-theme-sakura.s3.bitiful.net/wallpaper-2025%2Fwallhaven-858k3j.jpg",
         "https://valaxy-theme-sakura.s3.bitiful.net/wallpaper-2025%2Fwallhaven-3l2vm3.jpg",
-        "https://valaxy-theme-sakura.s3.bitiful.net/wallpaper-2025%2Fwallhaven-3z9dz9.jpg",
         "https://valaxy-theme-sakura.s3.bitiful.net/wallpaper-2025%2Fwallhaven-zyxq6j.jpg",
-        "https://valaxy-theme-sakura.s3.bitiful.net/home-wallpaper.jpg",
         "https://valaxy-theme-sakura.s3.bitiful.net/wallpaper-2025%2Fwallhaven-yxoejx.jpg",
       ],
       randomUrls: true,
@@ -54,6 +54,11 @@ export default defineValaxyConfig<ThemeUserConfig>({
       typewriter: true,
       enableHitokoto: true,
       waveTheme: "yunCloud",
+    },
+
+    notice: {
+      message:
+        '<b>这是一个公告信息, 主题开源地址请见: <a href="https://github.com/WRXinYue/valaxy-theme-sakura">https://github.com/WRXinYue/valaxy-theme-sakura</a></br>',
     },
 
     pagination: {
@@ -69,6 +74,7 @@ export default defineValaxyConfig<ThemeUserConfig>({
       isImageReversed: true,
       defaultImage: [
         "https://img.xjh.me/random_img.php?random?type=bg&return=302",
+        "https://www.dmoe.cc/random.php?random",
       ],
     },
 
@@ -87,21 +93,61 @@ export default defineValaxyConfig<ThemeUserConfig>({
         locale: "menu.categories",
         link: "/categories",
       },
-      // {
-      //   icon: "i-fa-archive",
-      //   locale: "menu.archives",
-      //   link: "/archives",
-      // },
+      {
+        icon: "i-fa-archive",
+        locale: "menu.archives",
+        link: "/archives",
+      },
+      {
+        icon: "i-fa-film",
+        text: "番剧",
+        link: "/anime",
+      },
       {
         icon: "i-fa-edit",
-        text: "留言",
+        text: "留言板",
         link: "/comment",
       },
       {
-        icon: "111",
+        text: "友情链接",
+        icon: "i-fa-chain",
+        link: "/links",
+        items: [
+          {
+            text: "GitHub",
+            icon: "i-line-md-github-twotone",
+            link: "https://github.com/WRXinYue/valaxy-theme-sakura",
+          },
+          {
+            text: "Valaxy →",
+            icon: "i-ri-cloud-fill",
+            link: "https://github.com/YunYouJun/valaxy",
+          },
+        ],
+      },
+      {
+        text: pkg.author.name,
+        icon: "i-line-md-hazard-lights-filled",
+        link: pkg.author.url,
+        target: "_blank",
+      },
+      {
+        text: "关于",
+        icon: "i-fa-leaf",
+        link: pkg.author.url,
+        target: "_blank",
+      },
+      {
+        icon: "i-fa6-solid:bookmark",
         text: "标签",
         link: "/tags",
       },
+      //{
+      //  text: "RSS",
+      //  icon: "i-fa-feed",
+      //  link: "/atom.xml",
+      //  target: "_blank",
+      //},
     ],
     navbarOptions: {
       title: ["BLog", "YukiKoi"],
@@ -110,6 +156,71 @@ export default defineValaxyConfig<ThemeUserConfig>({
       invert: ["home"],
       showMarker: false,
       autoHide: ["home"],
+    },
+
+    sidebar: [
+      {
+        text: "🌈",
+        locale: "menu.home",
+        link: "/",
+      },
+      {
+        text: "🗂️",
+        locale: "menu.archives",
+        link: "/archives/",
+      },
+      {
+        text: "📂",
+        locale: "menu.categories",
+        link: "/categories/",
+      },
+      {
+        text: "🏷️",
+        locale: "menu.tags",
+        link: "/tags/",
+      },
+      {
+        text: "🎯 清单",
+
+        items: [
+          {
+            text: "电影 🎞️",
+            link: "/movie",
+          },
+          {
+            text: "番剧 🍨",
+            link: "/anime",
+          },
+          {
+            text: "游戏 🎮",
+            link: "/game",
+          },
+          {
+            text: "歌单 🎵",
+            link: "/music",
+          },
+        ],
+      },
+      {
+        text: "📝 留言板",
+        link: "/comment",
+      },
+      {
+        text: "🍻 朋友圈",
+        link: "/links",
+      },
+      {
+        text: "❤️ 打赏",
+      },
+      {
+        text: "📌",
+        locale: "menu.about",
+        link: "https://github.com/Yueosa",
+      },
+    ],
+
+    sidebarOptions: {
+      position: "left",
     },
 
     tags: {
@@ -145,6 +256,11 @@ export default defineValaxyConfig<ThemeUserConfig>({
         animationIn: true,
         lyricHidden: true,
       },
+    }),
+    addonBangumi({
+      api: "https://yi_xiao_jiu-bangumi.web.val.run",
+      bilibiliUid: "433677987",
+      bgmEnabled: false,
     }),
   ],
 

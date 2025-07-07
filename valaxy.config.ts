@@ -30,6 +30,10 @@ export default defineValaxyConfig<ThemeUserConfig>({
       enable: false,
     },
 
+    footer: {
+      since: 2025,
+    },
+
     hero: {
       title: "Welcome~",
       motto: "You got to put the past behind you before you can move on.",

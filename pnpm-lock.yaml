@@ -14,6 +14,9 @@ importers:
       valaxy-addon-bangumi:
         specifier: ^0.2.2
         version: 0.2.2(valaxy@0.23.5(@babel/parser@7.27.7)(@nuxt/kit@3.17.5)(@types/markdown-it@14.1.2)(@types/node@24.0.7)(@vue/compiler-dom@3.5.17)(axios@1.10.0)(eslint@9.30.0(jiti@2.4.2))(postcss@8.5.6)(rollup@4.44.1)(terser@5.43.1)(typescript@5.8.3)(yaml@2.8.0))
+      valaxy-addon-lightgallery:
+        specifier: ^0.0.4
+        version: 0.0.4(valaxy@0.23.5(@babel/parser@7.27.7)(@nuxt/kit@3.17.5)(@types/markdown-it@14.1.2)(@types/node@24.0.7)(@vue/compiler-dom@3.5.17)(axios@1.10.0)(eslint@9.30.0(jiti@2.4.2))(postcss@8.5.6)(rollup@4.44.1)(terser@5.43.1)(typescript@5.8.3)(yaml@2.8.0))
       valaxy-addon-live2d:
         specifier: ^0.3.0
         version: 0.3.0
@@ -2725,6 +2728,10 @@ packages:
     resolution: {integrity: sha512-+bT2uH4E5LGE7h/n3evcS/sQlJXCpIp6ym8OWJ5eV6+67Dsql/LaaT7qJBAt2rzfoa/5QBGBhxDix1dMt2kQKQ==}
     engines: {node: '>= 0.8.0'}
 
+  lightgallery@2.7.2:
+    resolution: {integrity: sha512-Ewdcg9UPDqV0HGZeD7wNE4uYejwH2u0fMo5VAr6GHzlPYlhItJvjhLTR0cL0V1HjhMsH39PAom9iv69ewitLWw==}
+    engines: {node: '>=6.0.0'}
+
   linkify-it@5.0.0:
     resolution: {integrity: sha512-5aHCbzQRADcdP+ATqnDuhhJ/MRIqDkZX5pyjFHRRysS8vZ5AbqGEoFIb6pYHPZ+L/OC2Lc+xT8uHVVR5CAK/wQ==}
 
@@ -3664,6 +3671,11 @@ packages:
 
   valaxy-addon-hitokoto@0.0.1:
     resolution: {integrity: sha512-N+1dl3gwxeoTraT+r7gvNfTUHIjapBNHXj/urILdKQFfji++s7ELqeCNoyyOLUpvLJJOPSfObkJ9MKDsfCm8FA==}
+
+  valaxy-addon-lightgallery@0.0.4:
+    resolution: {integrity: sha512-+pQJUBCPXff5Isd5ZfNrgkEqh+oKPvzNvgw74vAxmPEeWKvW8786lftVgkoWByFrNsn92iN7q7h5jt3evmQFDg==}
+    peerDependencies:
+      valaxy: latest
 
   valaxy-addon-live2d@0.3.0:
     resolution: {integrity: sha512-gSTbVG6eq1xUdxguZUswgCEAmDNDh8awBEFPcj9v9qfWEoPLHa74fc+T/ShRter4WcTbrhEfBY3h7Rs0REL8RQ==}
@@ -6873,6 +6885,8 @@ snapshots:
       prelude-ls: 1.2.1
       type-check: 0.4.0
 
+  lightgallery@2.7.2: {}
+
   linkify-it@5.0.0:
     dependencies:
       uc.micro: 2.1.0
@@ -7944,6 +7958,11 @@ snapshots:
       valaxy: 0.23.5(@babel/parser@7.27.7)(@nuxt/kit@3.17.5)(@types/markdown-it@14.1.2)(@types/node@24.0.7)(@vue/compiler-dom@3.5.17)(axios@1.10.0)(eslint@9.30.0(jiti@2.4.2))(postcss@8.5.6)(rollup@4.44.1)(terser@5.43.1)(typescript@5.8.3)(yaml@2.8.0)
 
   valaxy-addon-hitokoto@0.0.1: {}
+
+  valaxy-addon-lightgallery@0.0.4(valaxy@0.23.5(@babel/parser@7.27.7)(@nuxt/kit@3.17.5)(@types/markdown-it@14.1.2)(@types/node@24.0.7)(@vue/compiler-dom@3.5.17)(axios@1.10.0)(eslint@9.30.0(jiti@2.4.2))(postcss@8.5.6)(rollup@4.44.1)(terser@5.43.1)(typescript@5.8.3)(yaml@2.8.0)):
+    dependencies:
+      lightgallery: 2.7.2
+      valaxy: 0.23.5(@babel/parser@7.27.7)(@nuxt/kit@3.17.5)(@types/markdown-it@14.1.2)(@types/node@24.0.7)(@vue/compiler-dom@3.5.17)(axios@1.10.0)(eslint@9.30.0(jiti@2.4.2))(postcss@8.5.6)(rollup@4.44.1)(terser@5.43.1)(typescript@5.8.3)(yaml@2.8.0)
 
   valaxy-addon-live2d@0.3.0:
     dependencies:

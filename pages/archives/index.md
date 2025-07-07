@@ -2,6 +2,6 @@
 layout: archives
 nav: false
 icon: noen
-# comment: false
+comment: false
 titile: 归档
 ---

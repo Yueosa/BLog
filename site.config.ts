@@ -1,12 +1,19 @@
 import { defineSiteConfig } from "valaxy";
 
 export default defineSiteConfig({
+  mode: "light",
   url: "https://blog.yeastar.xin",
   favicon: "/avatar.ico",
   lang: "zh-CN",
   title: "YukiLog",
   author: {
+    avatar:
+      "https://ca.alist.castimage.net:5244/d/local/otherUser/ycx/YukiKoi/zvibf-vxmbi-001.ico?sign=OyZDtq1G8Wz6adQmICLFWKZGn9Bt1KEZp6D3iM3pzfk=:0",
     name: "Sakura",
+    status: {
+      emoji: "📚",
+      message: "每天都在拼命学",
+    },
   },
   description: "一直一直喜欢你哦.",
   social: [
@@ -49,7 +56,7 @@ export default defineSiteConfig({
   ],
 
   search: {
-    enable: false,
+    enable: true,
   },
 
   sponsor: {

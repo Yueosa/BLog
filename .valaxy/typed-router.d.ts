@@ -23,11 +23,13 @@ declare module 'vue-router/auto-routes' {
     '/404': RouteRecordInfo<'/404', '/404', Record<never, never>, Record<never, never>>,
     '/about/': RouteRecordInfo<'/about/', '/about', Record<never, never>, Record<never, never>>,
     '/about/site': RouteRecordInfo<'/about/site', '/about/site', Record<never, never>, Record<never, never>>,
+    '/anime/': RouteRecordInfo<'/anime/', '/anime', Record<never, never>, Record<never, never>>,
     '/archives/': RouteRecordInfo<'/archives/', '/archives', Record<never, never>, Record<never, never>>,
     '/categories/': RouteRecordInfo<'/categories/', '/categories', Record<never, never>, Record<never, never>>,
     '/comment/': RouteRecordInfo<'/comment/', '/comment', Record<never, never>, Record<never, never>>,
     '/links/': RouteRecordInfo<'/links/', '/links', Record<never, never>, Record<never, never>>,
     '/page/[page]': RouteRecordInfo<'/page/[page]', '/page/:page', { page: ParamValue<true> }, { page: ParamValue<false> }>,
+    '/posts/reward': RouteRecordInfo<'/posts/reward', '/posts/reward', Record<never, never>, Record<never, never>>,
     '/posts/s001': RouteRecordInfo<'/posts/s001', '/posts/s001', Record<never, never>, Record<never, never>>,
     '/posts/s002': RouteRecordInfo<'/posts/s002', '/posts/s002', Record<never, never>, Record<never, never>>,
     '/posts/s003': RouteRecordInfo<'/posts/s003', '/posts/s003', Record<never, never>, Record<never, never>>,
@@ -39,6 +41,7 @@ declare module 'vue-router/auto-routes' {
     '/posts/s009': RouteRecordInfo<'/posts/s009', '/posts/s009', Record<never, never>, Record<never, never>>,
     '/posts/s010': RouteRecordInfo<'/posts/s010', '/posts/s010', Record<never, never>, Record<never, never>>,
     '/posts/theone': RouteRecordInfo<'/posts/theone', '/posts/theone', Record<never, never>, Record<never, never>>,
+    '/search/': RouteRecordInfo<'/search/', '/search', Record<never, never>, Record<never, never>>,
     '/tags/': RouteRecordInfo<'/tags/', '/tags', Record<never, never>, Record<never, never>>,
   }
 }

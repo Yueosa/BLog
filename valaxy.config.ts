@@ -211,6 +211,7 @@ export default defineValaxyConfig<ThemeUserConfig>({
       },
       {
         text: "❤️ 打赏",
+        link: "/posts/reward",
       },
       {
         text: "📌",

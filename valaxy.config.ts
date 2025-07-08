@@ -38,7 +38,7 @@ export default defineValaxyConfig<ThemeUserConfig>({
 
     hero: {
       title: "Welcome~",
-      motto: "You got to put the past behind you before you can move on.",
+      motto: "往者不可谏，来者犹可追",
       // 首页轮播图片
       urls: [
         "https://valaxy-theme-sakura.s3.bitiful.net/wallpaper-2025%2Fwallhaven-858k3j.jpg",
@@ -52,7 +52,7 @@ export default defineValaxyConfig<ThemeUserConfig>({
       style: "filter-grid",
       fixedImg: true,
       typewriter: true,
-      enableHitokoto: true,
+      enableHitokoto: false,
       waveTheme: "yunCloud",
     },
 

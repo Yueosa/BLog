@@ -26,8 +26,6 @@ tags:
 ![blog](./blog.png)
 
 > 本博客使用的主题是 `valaxy-theme-sakura`，地址为 [Valaxy Theme Sakura](https://sakura.valaxy.site/)(点击跳转)
->
-> `Valaxy` 的其他主题： [Valaxy Themes Gallery](https://valaxy.site/themes/gallery)（点击跳转）
 
 ## 🎈 认识 与 安装 `nodejs`、`pnpm`、`valaxy`
 
@@ -43,30 +41,36 @@ tags:
 
 - `Valaxy`、`Vue`、`Vite` 等现代框架都依赖 Node.js 执行
 
+你可以在他的官网找到关于下载的帮助
+
 #### 官网地址 [Node.js](https://nodejs.org/)（点击跳转）
 
-安装完成后验证
+官网给出了非常详细的安装步骤，你可以根据自己的操作系统选择对应版本安装
 
-```bash
-node -v # 检查nodejs
-npm -v # 检查npm包管理器
-
-```
+![nodejs](./nodejs.png)
 
 ### 🟡 pnpm
 
-> `pnpm` 是比 `npm`、`yarn` 更快，更节约空间的包管理器
+> `pnpm` 也是一个包管理器，和 `npm`、`yarn` 一样
+>
+> 推荐使用它是因为它比其他包管理器更加 **快速**、**轻量**
 
-安装 与 检查
+你可能在安装 `Node.js` 的时候就顺带安装它了，如果没有的话，这里也会给出他的安装命令，使用 `npm` 安装，参数 `-g`（--global） 的意思是全局安装
 
 ```bash
 npm install -g pnpm
-pnpm -v # 检查pnpm
+pnpm -v # 检查pnpm版本
 ```
 
 ### 🌸 Valaxy
 
-> 下一代静态博客框架
+> Valaxy 是一个基于 Vue 3 + Vite 的现代静态博客框架，专为博客设计
+
+拥有热更新、强大主题系统、Markdown 支持、RSS/标签/分页等功能
+
+它兼容 Vue/Vite 插件，支持 TypeScript 配置和组件覆盖，适合想要高度定制、快速部署的技术型写作者使用。
+
+![valaxy](./valaxy.png)
 
 #### 官网地址 [Valaxy](https://valaxy.site/)（点击跳转）
 
@@ -124,7 +128,7 @@ pnpm create valaxy # 创建valaxy项目
 
 访问 `Preview` 或 `Network` 地址，就能在浏览器看到页面了
 
-下次启动时，也只需要来到这个目录下，执行
+下次启动时，也只需要来到项目目录下，执行
 
 ```bash
 pnpm dev
@@ -146,7 +150,11 @@ pnpm dev
 | `public/`          | 📂 用于放置资源，比如配置网站、文章中引用的图片、视频等       |
 | `package.json`     | 📜 项目元信息 + 脚本命令列表。你可以在这里添加插件、定义命令  |
 
-### 🚀 下载主题示例、查看主题文档
+### 🚀 下载主题
+
+`valaxy` 提供了多种主题可供选择，省去了复杂的肉编 `.vue` 烦恼，直接安装主题就可以快速上手
+
+##### 你可以在这里 [Valaxy Themes Gallery](https://valaxy.site/themes/gallery)（点击跳转） 查看他的所有主题
 
 #### 以 `valaxy-theme-sakura` 主题为例
 
@@ -159,9 +167,9 @@ pnpm add valaxy-theme-sakura
 配置项目使用这个主题，编辑 `valaxy.config.ts`：
 
 ```ts
-import { defineValaxyConfig } from "valaxy";
+import type { ThemeUserConfig } from "valaxy-theme-sakura";
 
-export default defineValaxyConfig({
+export default defineValaxyConfig<ThemeUserConfig>({
   theme: "sakura", // ✅ 使用 sakura 主题
 });
 ```
@@ -174,13 +182,13 @@ export default defineValaxyConfig({
 pnpm dev
 ```
 
-#### 前往 `github` 下载该主题的示例作为参考
+##### 前往 `github` 下载该主题的示例作为参考
 
 主题一般都有对应的 `github` 仓库，例如这里使用的 sakura 主题，地址为 [valaxy-theme-sakura](https://github.com/wrxinyue/valaxy-theme-sakura)（点击跳转）
 
-对于大部分主题来说，可以参考官方仓库中的 demo 修改为你想要的效果
+对于大部分主题来说，可以参考官方仓库中的 demo 进行学习
 
-## 配置 BLog
+## ⚙️ 配置 BLog
 
 前面的章节中，已经成功的创建并运行了 `Valaxy` 项目，这一部分将会介绍如何初步个性化配置外观与功能
 
@@ -189,6 +197,21 @@ pnpm dev
 ### `valaxy.config.ts` 配置
 
 前面已经提到过 ，`valaxy.config.ts` 是博客的核心配置文件，下面会分类介绍他的各个部分
+
+`valaxy.config.ts` 的结构如下
+
+```ts
+// 导入需要的类型、函数和组件，例如：
+import type { ThemeUserConfig } from "valaxy-theme-sakura";
+import { defineValaxyConfig } from "valaxy";
+import { addonWaline } from "valaxy-addon-waline";
+
+export default defineValaxyConfig<ThemeUserConfig>({
+  // 在这里你可以配置主题参数和它的值
+});
+```
+
+常见的配置参数包括 `hero`、`PostList`、`navbar`、`sidebar`、`addons` 等，这里都会逐一介绍
 
 #### 首页配置 `hero`
 

@@ -189,6 +189,10 @@ export default defineValaxyConfig<ThemeUserConfig>({
         text: "🎯 清单",
         items: [
           {
+            text: "相册 📷",
+            link: "/lightgallery",
+          },
+          {
             text: "电影 🎞️",
             link: "/movie",
           },

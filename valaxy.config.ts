@@ -49,9 +49,9 @@ export default defineValaxyConfig<ThemeUserConfig>({
       randomUrls: true,
       // 首页视频
       playerUrl: "output.mp4",
-      style: "filter-grid",
+      style: "filter-dim",
       fixedImg: true,
-      typewriter: true,
+      typewriter: false,
       enableHitokoto: false,
       waveTheme: "yunCloud",
     },
@@ -119,7 +119,7 @@ export default defineValaxyConfig<ThemeUserConfig>({
             link: "https://github.com/WRXinYue/valaxy-theme-sakura",
           },
           {
-            text: "Valaxy →",
+            text: "Valaxy",
             icon: "i-ri-cloud-fill",
             link: "https://github.com/YunYouJun/valaxy",
           },
@@ -181,7 +181,6 @@ export default defineValaxyConfig<ThemeUserConfig>({
       },
       {
         text: "🎯 清单",
-
         items: [
           {
             text: "电影 🎞️",

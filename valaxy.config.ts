@@ -4,6 +4,7 @@ import { addonMeting } from "valaxy-addon-meting";
 import { addonWaline } from "valaxy-addon-waline";
 import { addonBangumi } from "valaxy-addon-bangumi";
 import pkg from "valaxy-theme-sakura/package.json";
+import { addonLightGallery } from "valaxy-addon-lightgallery";
 
 export default defineValaxyConfig<ThemeUserConfig>({
   theme: "sakura",
@@ -97,6 +98,11 @@ export default defineValaxyConfig<ThemeUserConfig>({
         icon: "i-fa-archive",
         locale: "menu.archives",
         link: "/archives",
+      },
+      {
+        icon: "i-fa-archive",
+        text: "相册",
+        link: "/lightgallery",
       },
       {
         icon: "i-fa-film",
@@ -262,6 +268,7 @@ export default defineValaxyConfig<ThemeUserConfig>({
       bilibiliUid: "433677987",
       bgmEnabled: false,
     }),
+    addonLightGallery(),
   ],
 
   vite: {

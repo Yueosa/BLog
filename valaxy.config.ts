@@ -135,11 +135,13 @@ export default defineValaxyConfig<ThemeUserConfig>({
             text: "GitHub",
             icon: "i-line-md-github-twotone",
             link: "https://github.com/WRXinYue/valaxy-theme-sakura",
+            target: "_blank",
           },
           {
             text: "Valaxy",
             icon: "i-ri-cloud-fill",
             link: "https://github.com/YunYouJun/valaxy",
+            target: "_blank",
           },
         ],
       },

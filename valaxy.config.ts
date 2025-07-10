@@ -202,31 +202,40 @@ export default defineValaxyConfig<ThemeUserConfig>({
       {
         text: "🎯 清单",
         items: [
-          {
-            text: "相册 📷",
-            link: "/lightgallery",
-          },
-          {
-            text: "电影 🎞️",
-            link: "/movie",
-          },
+          //{
+          //  text: "电影 🎞️",
+          //  link: "/movie",
+          //},
           {
             text: "番剧 🍨",
             link: "/anime",
           },
-          {
-            text: "游戏 🎮",
-            link: "/game",
-          },
-          {
-            text: "歌单 🎵",
-            link: "/music",
-          },
+          //{
+          //  text: "游戏 🎮",
+          //  link: "/game",
+          //},
+          //{
+          //  text: "歌单 🎵",
+          //  link: "/music",
+          //},
         ],
       },
       {
         text: "📝 留言板",
         link: "/comment",
+      },
+      {
+        text: "📷 相册",
+        items: [
+          {
+            text: "Reality 🪟",
+            link: "/lightgallery/reality",
+          },
+          {
+            text: "Dress ♥️",
+            link: "/lightgallery/dress",
+          },
+        ],
       },
       {
         text: "🍻 朋友圈",

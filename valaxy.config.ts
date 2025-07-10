@@ -100,9 +100,21 @@ export default defineValaxyConfig<ThemeUserConfig>({
         link: "/archives",
       },
       {
-        icon: "i-fa-archive",
+        icon: "i-fa6-solid:file-image",
         text: "相册",
-        link: "/lightgallery",
+        link: "",
+        items: [
+          {
+            text: "现实",
+            icon: "i-fa6-solid:camera-retro",
+            link: "/lightgallery/reality",
+          },
+          {
+            text: "女装",
+            icon: "i-fa6-solid:heart",
+            link: "/lightgallery/dress",
+          },
+        ],
       },
       {
         icon: "i-fa-film",
@@ -148,12 +160,12 @@ export default defineValaxyConfig<ThemeUserConfig>({
         text: "标签",
         link: "/tags",
       },
-      //{
-      //  text: "RSS",
-      //  icon: "i-fa-feed",
-      //  link: "/atom.xml",
-      //  target: "_blank",
-      //},
+      {
+        text: "RSS",
+        icon: "i-fa-feed",
+        link: "/atom.xml",
+        target: "_blank",
+      },
     ],
     navbarOptions: {
       title: ["BLog", "YukiKoi"],

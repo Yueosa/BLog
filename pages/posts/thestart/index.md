@@ -4,6 +4,7 @@ subTitle: 正在更新中
 date: 2025-07-08
 updated: 2025-07-08
 cover: /cover/thestart/cover01.png
+toc: true
 categories:
   - 学习
 tags:
@@ -19,9 +20,9 @@ tags:
 >
 > 于是，“我也要搭建一个博客” 的想法出生了
 
-本文记录了本人从零认识 `valaxy` 到搭建出个人博客 **[BLog YukiKoi](https://blog.yeastar.xin)** 的所有过程，遇到的问题，以及解决方式
+本文记录了本人从零认识 `valaxy` 到搭建出个人博客 **[BLog YukiKoi](https://blog.yeastar.xin)** 的所有过程，遇到的问题，以及解决方式，生产环境为 `AcrhLinux`，部署环境为 `Ubuntu`
 
-由于本人之前对前端的了解仅限于 `HTML`、`CSS`、 `JavaScript`，对 `vue` 学习尚浅，所以文章中有遗漏，错误的地方欢迎在评论区指出批评
+由于本人之前对前端的了解仅限于 `HTML`、`CSS`、 `JavaScript`，对 `Vue` 学习尚浅，所以文章中有遗漏，错误的地方欢迎在评论区指出批评
 
 ![blog](./blog.png)
 
@@ -29,7 +30,7 @@ tags:
 
 ## 🎈 认识 与 安装 `nodejs`、`pnpm`、`valaxy`
 
-在开始搭建博客之前，需要先对使用的工具有所了解：`Node.js`、`pnpm`、`Valaxy`
+###### 在开始搭建博客之前，需要先对使用的工具有所了解：`Node.js`、`pnpm`、`Valaxy`
 
 ### 🟢 Node.js
 
@@ -43,7 +44,7 @@ tags:
 
 你可以在他的官网找到关于下载的帮助
 
-#### 官网地址 [Node.js](https://nodejs.org/)（点击跳转）
+##### 官网地址 [Node.js](https://nodejs.org/)（点击跳转）
 
 官网给出了非常详细的安装步骤，你可以根据自己的操作系统选择对应版本安装
 
@@ -72,7 +73,7 @@ pnpm -v # 检查pnpm版本
 
 ![valaxy](./valaxy.png)
 
-#### 官网地址 [Valaxy](https://valaxy.site/)（点击跳转）
+##### 官网地址 [Valaxy](https://valaxy.site/)（点击跳转）
 
 在这里可以查看 Valaxy 相关的配置文档、API、主题、组件库等信息
 
@@ -80,7 +81,7 @@ pnpm -v # 检查pnpm版本
 
 ### 📥 新建项目
 
-完成 `Node.js` 和 `pnpm` 的安装后，就可以开始构建博客项目，Valaxy 提供了非常简单的初始化流程，一条命令就能完成创建
+###### 完成 `Node.js` 和 `pnpm` 的安装后，就可以开始构建博客项目，Valaxy 提供了非常简单的初始化流程，一条命令就能完成创建
 
 ```bash
 mkdir my-blog # 创建一个目录来放置博客项目
@@ -136,7 +137,7 @@ pnpm dev
 
 ### 📚 项目结构介绍
 
-进入 `valaxy-blog`，会看到很多文件，这里简单介绍一下比较基础的部分
+###### 进入 `valaxy-blog`，会看到很多文件，这里简单介绍一下比较基础的部分
 
 ![valaxy-blog](./valaxy-blog.png)
 
@@ -152,11 +153,11 @@ pnpm dev
 
 ### 🚀 下载主题
 
-`valaxy` 提供了多种主题可供选择，省去了复杂的肉编 `.vue` 烦恼，直接安装主题就可以快速上手
+###### `valaxy` 提供了多种主题可供选择，省去了复杂的肉编 `.vue` 烦恼，直接安装主题就可以快速上手
 
 ##### 你可以在这里 [Valaxy Themes Gallery](https://valaxy.site/themes/gallery)（点击跳转） 查看他的所有主题
 
-#### 以 `valaxy-theme-sakura` 主题为例
+#### ✨ 以 `valaxy-theme-sakura` 主题为例
 
 安装主题
 
@@ -194,9 +195,9 @@ pnpm dev
 
 当然，关于更详细的配置细节，可以参考 [Valaxy 官方文档](https://valaxy.site/guide/config/)（点击跳转）和主题对应文档
 
-### `valaxy.config.ts` 配置
+### 📎 `valaxy.config.ts` 配置
 
-前面已经提到过 ，`valaxy.config.ts` 是博客的核心配置文件，下面会分类介绍他的各个部分
+###### 前面已经提到过 ，`valaxy.config.ts` 是博客的核心配置文件，下面会分类介绍他的各个部分
 
 `valaxy.config.ts` 的结构如下
 
@@ -213,9 +214,9 @@ export default defineValaxyConfig<ThemeUserConfig>({
 
 常见的配置参数包括 `hero`、`PostList`、`navbar`、`sidebar`、`addons` 等，这里都会逐一介绍
 
-#### 首页配置 `hero`
+#### 📕 首页配置 `hero`
 
-`hero` 部份用于配置首页，例如背景图片、视频、标题、横幅等...
+###### `hero` 部份用于配置首页，例如背景图片、视频、标题、横幅等...
 
 以下是一个配置示例：
 
@@ -248,9 +249,9 @@ hero: {
 },
 ```
 
-#### 卡片配置 `PostList`
+#### 📕 卡片配置 `PostList`
 
-`PostList` 部分配置首页文章列表的卡片展示
+###### `PostList` 部分配置首页文章列表的卡片展示
 
 以下是一个配置示例：
 
@@ -269,9 +270,30 @@ postList: {
 },
 ```
 
-#### 电脑端菜单 `navbar`
+#### 📕 电脑端菜单 `navbar`
 
-`navbar` 部分用于配置大屏情况（平板、电脑窗口）下时，顶部菜单栏的样式
+###### `navbar` 部分用于配置大屏情况（平板、电脑窗口）下时，顶部菜单栏的样式
+
+##### 基本格式为
+
+```ts
+navbar: [
+  {
+    icon: "图标"，
+    text: "显示文本",
+    link: "链接",
+    target: "跳转方式",
+    items: [
+      {
+        icon: "图标"，
+        text: "显示文本",
+        link: "链接",
+        target: "跳转方式",
+      },
+    ],
+  },
+],
+```
 
 以下是一个配置示例：
 
@@ -296,6 +318,26 @@ navbar: [
     link: "/archives",
   },
   {
+        icon: "i-fa6-solid:file-image",
+        text: "相册",
+        // link 可以直接为空，表示不跳转
+        link: "",
+        items: [
+          {
+            text: "现实",
+            icon: "i-fa6-solid:camera-retro",
+            // 对应 pages/lightgallery/reality/index.md
+            link: "/lightgallery/reality",
+          },
+          {
+            text: "女装",
+            icon: "i-fa6-solid:heart",
+            // 对应 pages/lightgallery/dress/index.md
+            link: "/lightgallery/dress",
+          },
+        ],
+      },
+  {
     icon: "i-fa-film",
     text: "番剧",
     // 对应 pages/anime/index.md
@@ -317,12 +359,16 @@ navbar: [
       {
         text: "GitHub",
         icon: "i-line-md-github-twotone",
+        // 跳转到外部链接
         link: "https://github.com/WRXinYue/valaxy-theme-sakura",
+        // target 就是 html 中的 <a target="...">，有四种标准值可选，默认为 _self
+        target: "_blank",
       },
       {
         text: "Valaxy",
         icon: "i-ri-cloud-fill",
         link: "https://github.com/YunYouJun/valaxy",
+        target: "_blank",
       },
     ],
   },
@@ -346,6 +392,13 @@ navbar: [
     // 对应 pages/tags/index.md
     link: "/tags",
   },
+  {
+    text: "RSS",
+    icon: "i-fa-feed",
+    // 这个路径会 valaxy build 自动生成
+    link: "/atom.xml",
+    target: "_blank",
+  },
 ],
 ```
 
@@ -353,7 +406,7 @@ navbar: [
 
 ![navbar](./navbar.png)
 
-> `icon` 部分支持 unocss + Iconify 图标系统，你可以在 [Icones](https://icones.js.org/) （点击跳转）获取调用代码，或直接下载需要的图标
+> `icon` 部分支持 unocss + Iconify 图标系统，你可以在 [Icones](https://icones.js.org/) （点击跳转）获取调用代码
 >
 > 与 `pkg.author.url` 相关的配置，需要到 `valaxy.config.ts` 头部导入的 `package.json`（并非根目录的`package.json`） 里面修改，如果你使用的 IDE 有跳转功能，会很容易找到，这里提供一个大概的位置
 >
@@ -404,9 +457,9 @@ navbar: [
 }
 ```
 
-#### 手机端侧边栏 `sidebar`
+#### 📕 手机端侧边栏 `sidebar`
 
-`sidebar` 的配置和 `navbar` 基本相同，不过他是服务于小屏设备的，会表现为一个侧边栏
+###### `sidebar` 的配置和 `navbar` 基本相同，不过他是服务于小屏设备的，会表现为一个侧边栏
 
 以下为配置示例
 
@@ -473,15 +526,24 @@ sidebar: [
 ],
 ```
 
-#### `Waline` 评论区 配置
+#### 📗 额外组件 `addons`
 
-`Waline` 的配置较为复杂，这里分为三个版块细说，当然你也可以直接参阅他们的配置文档：[github 仓库地址](https://github.com/walinejs/waline) [配置说明文件](https://waline.js.org/guide/get-started/)
+###### `Valaxy` 支持接入额外组件实现更多功能，例如网站统计，评论区，相册等等
+
+配置额外组件之前，推荐你先了解 [📎 `/pages/posts`](#pages-posts-note) （点击跳转）
+
+#### 📗 `addon-Waline` 评论区 配置
+
+###### `Waline` 的配置较为复杂，这里将分为三部分细说，当然你也可以直接参阅他们的配置文档：[github 仓库地址](https://github.com/walinejs/waline) | [配置说明文件](https://waline.js.org/guide/get-started/)
+
+![waline](./waline.png)
 
 评论区需要三个部分
-| 名称 | 作用 |
-|-|-|
-| 数据库 | 存储评论数据 |
-| 服务端 | 提供评论区服务 |
+
+| 名称   | 作用                 |
+| ------ | -------------------- |
+| 数据库 | 存储评论数据         |
+| 服务端 | 提供评论区服务       |
 | 客户端 | 用于访问 waline 服务 |
 
 > 这里会演示 `LeanCloud`（云数据库） + `Vercel`（云部署） + `valaxy-
@@ -491,11 +553,34 @@ addon-waline`（valaxy 官方提供的插件）来进行实现
 
 ##### `LeanCloud` 部署
 
-| 正在写
+###### `LeanCloud` 是一个轻量而稳定的云数据库服务，它将作为 `Waline` 的后端数据存储，用于保存评论内容、访客信息等数据
+
+- 首先推荐注册 `LeanCloud 国际版`，这里是他的地址：[LeanCloud](https://console.leancloud.app/apps)（点击跳转）
+- 完成注册后，创建一个新的应用（版本可以选择免费的开发版）
+- 然后进入 设置 -> 应用凭证，记录你的 `APP ID`、`APP Key`、`Master Key`
+
+![LeanCloud](./LeanCloud.png)
+
+> 至此我们已经创建了一个 **云数据库**，并且得到了他的 **访问密钥**
+
+##### 🤝 你需要一个 GitHub 账号
+
+###### Vercel 是一个专注于前端和 Serverless 项目的部署平台，它通过与你的 GitHub 仓库绑定，实现自动构建与托管。因此，在部署 Waline 服务端前，请确保你已有一个可用的 [GitHub 账号](https://github.com/)。
+
+如果你还没有账号，可以几分钟内免费注册一个 —— 它在整个前后端开发与部署过程中都是不可或缺的伙伴。
 
 ##### `Vercel` 部署
 
-| 正在写
+###### `Vercel` 是一个简单、快速的 Serverless 平台，用于托管 `Waline` 的服务端程序
+
+- 点击这个链接 -> [Deploy](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fwalinejs%2Fwaline%2Ftree%2Fmain%2Fexample) 就能一键跳转到 `Vercel` 进行部署，如果你没有账号，请使用 `Github` 账号进行登录
+- `Git Scope` 选择你的 `Github` 账号，然后输入一个你喜欢的项目名称，点击 `Create`，`Vercel` 会基于 `Waline` 的模板帮你自动创建仓库
+- 等待 1-2 分钟创建成功后，进入 `Settings` - `Environment Variables`，你需要在这里配置三个环境变量 `LEAN_ID`、`LEAN_KEY`、`LEAN_MASTER_KEY`，他们值对应你在 `LeanCloud` 中获取的 `APP ID`、`APP Key`、`Master Key`
+- 配置完成后点击 `Redeploy` 重新部署（这是为了更新环境变量），等待 `STATUS` 显示为 `Ready` 后，点击 `Visit` 就能跳转到你的 **服务地址**
+
+![Vercel](./vercel.png)
+
+> 至此我们已经完成了`Waline`后端服务的配置，并且拿到了他的 **服务地址**
 
 ##### `Valaxy` 接入
 
@@ -521,9 +606,21 @@ export default defineValaxyConfig({
 });
 ```
 
-#### `Meting` 网易云歌单 接入
+在需要开启评论的页面的 `index.md` 头部写入 `comment: true` 即可（pages/posts/ 默认开启）
 
-网易云音乐的相关配置就简单很多，只需要获取歌单 id，利用组件嵌入即可
+##### 评论管理
+
+部署完毕后，直接进入 `<serverURL>/ui/register` 进行注册，第一个注册的用户将会成为管理员
+
+![Waline-ui](./waline-ui.png)
+
+管理员可以管理所有评论信息，用户信息
+
+#### 📗 `addon-Meting` 网易云歌单 接入
+
+###### 网易云音乐的相关配置就简单很多，只需要获取歌单 id，利用组件嵌入即可
+
+![Meting](./meting.png)
 
 安装 `addon-meting` 组件
 
@@ -557,9 +654,11 @@ export default defineValaxyConfig<ThemeUserConfig>({
 
 > 关于组件的更多信息可以查看这个文档 [valaxy-addon-meting](https://github.com/YunYouJun/valaxy/tree/main/packages/valaxy-addon-meting)（点击跳转）
 
-#### `Bangumi` BiliBili 番剧列表 获取
+#### 📗 `addon-Bangumi` BiliBili 番剧列表 获取
 
-接入番剧的工作也和 `meting` 差不多，使用 `bilibiliUid` 即可获取列表，注意需要在 `bilibili` 将 “我的追番” 设置为公开
+###### 接入番剧的工作也和 `meting` 差不多，使用 `bilibiliUid` 即可获取列表，注意需要在 `bilibili` 将 “我的追番” 设置为公开
+
+![Bangumi](./bangumi.png)
 
 安装 `addon-bangumi` 组件
 
@@ -585,21 +684,43 @@ export default defineValaxyConfig<ThemeUserConfig>({
 
 > 关于组件的更多信息可以查看这个文档 [valaxy-addon-bangumi](https://github.com/YunYouJun/valaxy/tree/main/packages/valaxy-addon-bangumi)（点击跳转）
 
-### `site-config` 配置
+#### 📗 `addon-lightgallery` 相册 展示
+
+###### 这个组件用于展示图片，并且提供放大查看、下载等功能
+
+![dress](./lightgallery.png)
+
+##### 🧩 安装 `valaxy-addon-lightgallery` 组件
+
+```bash
+pnpm add valaxy-addon-lightgallery
+```
+
+在 `valaxy.config.ts` 中使用
+
+```ts
+import { addonLightGallery } from "valaxy-addon-lightgallery";
+
+export default defineValaxyConfig<ThemeUserConfig>({
+  addons: [addonLightGallery()],
+});
+```
+
+### 📎 `site-config` 配置
 
 | 正在施工
 
-### `/pages/posts` 简单说明
+### 📎 `/pages/posts` 简单说明 {#pages-posts-note}
 
 | 正在施工
 
-### 基于 `VPS` 的 部署方案
+### 📎 基于 `VPS` 的 部署方案
 
 | 正在施工
 
-## 常见问题
+## ❓ 常见问题
 
-### 不显示图标/ icon: "xxx" 无法调用图标
+### 📘 不显示图标/ icon: "xxx" 无法调用图标
 
 可能是因为缺少 `@iconify-json/fa`、`@iconify-json/line-md` 组件库
 
@@ -607,7 +728,7 @@ export default defineValaxyConfig<ThemeUserConfig>({
 pnpm add @iconify-json/fa @iconify-json/line-md # 使用pnpm安装，之后pnpm dev 重启项目即可
 ```
 
-### 修改配置文件后浏览器内没有变化
+### 📘 修改配置文件后浏览器内没有变化
 
 除去配置问题，页面不刷新/无变化极有可能是因为浏览器/项目缓存导致，可以尝试在 f12 中选择 “停用缓存”，或直接使用 无痕页面 打开，同时重启 valaxy 项目
 

@@ -20,7 +20,7 @@ tags:
 >
 > 于是，“我也要搭建一个博客” 的想法出生了
 
-本文记录了本人从零认识 `valaxy` 到搭建出个人博客 **[BLog YukiKoi](https://blog.yeastar.xin)** 的所有过程，遇到的问题，以及解决方式，生产环境为 `AcrhLinux`，部署环境为 `Ubuntu`
+本文记录了本人从零认识 `valaxy` 到搭建出个人博客 **[YukiLog](https://blog.yeastar.xin)** 的所有过程，遇到的问题，以及解决方式，生产环境为 `AcrhLinux`，部署环境为 `Ubuntu`
 
 由于本人之前对前端的了解仅限于 `HTML`、`CSS`、 `JavaScript`，对 `Vue` 学习尚浅，所以文章中有遗漏，错误的地方欢迎在评论区指出批评
 

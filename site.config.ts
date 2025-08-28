@@ -8,7 +8,7 @@ export default defineSiteConfig({
   title: "YukiLog",
   author: {
     avatar:
-      "https://ca.alist.castimage.net:5244/d/local/otherUser/ycx/YukiKoi/zvibf-vxmbi-001.ico?sign=OyZDtq1G8Wz6adQmICLFWKZGn9Bt1KEZp6D3iM3pzfk=:0",
+      "/avatar.jpg",
     name: "Sakura",
     status: {
       emoji: "📚",

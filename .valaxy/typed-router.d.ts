@@ -32,6 +32,7 @@ declare module 'vue-router/auto-routes' {
     '/lightgallery/reality/': RouteRecordInfo<'/lightgallery/reality/', '/lightgallery/reality', Record<never, never>, Record<never, never>>,
     '/links/': RouteRecordInfo<'/links/', '/links', Record<never, never>, Record<never, never>>,
     '/page/[page]': RouteRecordInfo<'/page/[page]', '/page/:page', { page: ParamValue<true> }, { page: ParamValue<false> }>,
+    '/posts/binary/theone/': RouteRecordInfo<'/posts/binary/theone/', '/posts/binary/theone', Record<never, never>, Record<never, never>>,
     '/posts/reward': RouteRecordInfo<'/posts/reward', '/posts/reward', Record<never, never>, Record<never, never>>,
     '/posts/thestart/': RouteRecordInfo<'/posts/thestart/', '/posts/thestart', Record<never, never>, Record<never, never>>,
     '/search/': RouteRecordInfo<'/search/', '/search', Record<never, never>, Record<never, never>>,

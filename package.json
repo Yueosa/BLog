@@ -22,7 +22,7 @@
     "valaxy-addon-meting": "^0.1.4",
     "valaxy-addon-twikoo": "^0.0.3",
     "valaxy-addon-waline": "^0.2.1",
-    "valaxy-theme-sakura": "^0.9.4",
+    "valaxy-theme-sakura": "^0.10.2",
     "valaxy-theme-yun": "0.23.5"
   },
   "devDependencies": {

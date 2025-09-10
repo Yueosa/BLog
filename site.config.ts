@@ -6,9 +6,10 @@ export default defineSiteConfig({
   favicon: "/avatar.ico",
   lang: "zh-CN",
   title: "YukiLog",
+  subtitle: "欢迎来到我的世界, 这里没有神, 只有我构筑的代码、记忆和光",
   author: {
     avatar:
-      "/avatar.jpg",
+      "avatar-modified.png",
     name: "Sakura",
     status: {
       emoji: "📚",

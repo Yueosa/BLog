@@ -39,8 +39,8 @@ importers:
         specifier: ^0.2.1
         version: 0.2.1(typescript@5.8.3)(valaxy@0.23.6(@babel/parser@7.27.7)(@nuxt/kit@3.17.5)(@types/markdown-it@14.1.2)(@types/node@24.0.7)(@vue/compiler-dom@3.5.17)(@vue/compiler-sfc@3.5.17)(axios@1.10.0)(eslint@9.30.0(jiti@2.4.2))(postcss@8.5.6)(rollup@4.44.1)(terser@5.43.1)(typescript@5.8.3)(yaml@2.8.0))
       valaxy-theme-sakura:
-        specifier: ^0.9.4
-        version: 0.9.4(@nuxt/kit@3.17.5)(valaxy-addon-hitokoto@0.0.1)(valaxy-addon-vercount@0.0.6)(vue@3.5.17(typescript@5.8.3))
+        specifier: ^0.10.2
+        version: 0.10.2(@nuxt/kit@3.17.5)(valaxy-addon-hitokoto@0.0.1)(valaxy-addon-vercount@0.0.6)(vue@3.5.17(typescript@5.8.3))
       valaxy-theme-yun:
         specifier: 0.23.5
         version: 0.23.5(vue@3.5.17(typescript@5.8.3))
@@ -3762,8 +3762,8 @@ packages:
     peerDependencies:
       valaxy: '>=0.22'
 
-  valaxy-theme-sakura@0.9.4:
-    resolution: {integrity: sha512-h6HliI5WJZEWGrnpRnWA1jmnxCzLXlmxqwAJETwcIjP5sy8r5DQ1whFtSj5JqL2QmTXaXyAiYNk6MD9aWC4A4w==}
+  valaxy-theme-sakura@0.10.2:
+    resolution: {integrity: sha512-lZyC5TGRcjwiQDvls1r40UwKHHdxjK51D5/CV9JMZsx8NO1uiWLOLD+XDxAXGVvLDas/aDUiAbIm7Pr+3X/yXQ==}
     peerDependencies:
       valaxy-addon-hitokoto: ^0.0.1
       valaxy-addon-vercount: ^0.0.6
@@ -3924,6 +3924,11 @@ packages:
     engines: {node: '>= 16'}
     peerDependencies:
       vue: ^3.0.0
+
+  vue-progressive-image@5.0.4:
+    resolution: {integrity: sha512-NB5thJDr3/uuN04vlsEUBAKsMp5R4uITmI2AdwBScCX+pw1BoQijULd4RqXdjxe7l0e0Kkq0upJCJZbloyBpYg==}
+    peerDependencies:
+      vue: 3.5.13
 
   vue-resize@2.0.0-alpha.1:
     resolution: {integrity: sha512-7+iqOueLU7uc9NrMfrzbG8hwMqchfVfSzpVlCMeJQe4pyibqyoifDNbKTZvwxZKDvGkB+PdFeKvnGZMoEb8esg==}
@@ -8103,7 +8108,7 @@ snapshots:
     transitivePeerDependencies:
       - typescript
 
-  valaxy-theme-sakura@0.9.4(@nuxt/kit@3.17.5)(valaxy-addon-hitokoto@0.0.1)(valaxy-addon-vercount@0.0.6)(vue@3.5.17(typescript@5.8.3)):
+  valaxy-theme-sakura@0.10.2(@nuxt/kit@3.17.5)(valaxy-addon-hitokoto@0.0.1)(valaxy-addon-vercount@0.0.6)(vue@3.5.17(typescript@5.8.3)):
     dependencies:
       '@ctrl/tinycolor': 4.1.0
       '@iconify-json/fa6-solid': 1.2.3
@@ -8113,6 +8118,7 @@ snapshots:
       typeit: 8.8.7
       valaxy-addon-hitokoto: 0.0.1
       valaxy-addon-vercount: 0.0.6
+      vue-progressive-image: 5.0.4(vue@3.5.17(typescript@5.8.3))
     transitivePeerDependencies:
       - '@nuxt/kit'
       - react
@@ -8412,6 +8418,10 @@ snapshots:
       '@intlify/core-base': 11.1.7
       '@intlify/shared': 11.1.7
       '@vue/devtools-api': 6.6.4
+      vue: 3.5.17(typescript@5.8.3)
+
+  vue-progressive-image@5.0.4(vue@3.5.17(typescript@5.8.3)):
+    dependencies:
       vue: 3.5.17(typescript@5.8.3)
 
   vue-resize@2.0.0-alpha.1(vue@3.5.17(typescript@5.8.3)):

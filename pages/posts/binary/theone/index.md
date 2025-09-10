@@ -1,9 +1,9 @@
 ---
 title: 二进制逆向学习笔记 (1)
-subTitle: 正在更新中
+subTitle: 导言 (废话)
 date: 2025-08-27
-updated: 2025-08-27
-cover: /cover/binary/cover.jpg
+updated: 2025-09-10
+cover: /cover/binary/cover_theone.jpg
 toc: true
 categories:
   - 学习笔记

@@ -5,18 +5,22 @@ export default defineSiteConfig({
   url: "https://blog.yeastar.xin",
   favicon: "/avatar.ico",
   lang: "zh-CN",
+  languages: ["zh-CN"],
+  timezone: "ASia/Shanghai",
   title: "YukiLog",
   subtitle: "欢迎来到我的世界, 这里没有神, 只有我构筑的代码、记忆和光",
   author: {
     avatar:
       "avatar-modified.png",
-    name: "Sakura",
+    name: "Lian",
+    /** 还支持email, link, intro */
     status: {
       emoji: "📚",
-      message: "每天都在拼命学",
+      message: "每天忙的像陀螺",
     },
   },
-  description: "一直一直喜欢你哦.",
+  description: "别看啦，小恋一直一直喜欢你哦.",
+  lastUpdated: true,
   social: [
     {
       name: "QQ 群 970312342",
@@ -60,6 +64,21 @@ export default defineSiteConfig({
     enable: true,
     type: "fuse",
   },
+
+  statistics: {
+  enable: true,
+  readTime: {
+    speed: {
+      cn: 300, // 默认 300
+      en: 100, // 默认 100
+    },
+  },
+  },
+
+  encrypt: {
+  enable: true, // 默认 AES-CBC
+  },
+
 
   sponsor: {
     enable: true,

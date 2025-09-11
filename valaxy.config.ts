@@ -30,7 +30,7 @@ export default defineValaxyConfig<ThemeUserConfig>({
       },
     },
     scrollDown: {
-      enable: false,
+      enable: true,
     },
 
     footer: {
@@ -50,11 +50,11 @@ export default defineValaxyConfig<ThemeUserConfig>({
       randomUrls: true,
       // 首页视频
       playerUrl: "output.mp4",
-      style: "filter-dim",
+      style: "dim",
       fixedImg: true,
       typewriter: false,
       enableHitokoto: false,
-      waveTheme: "yunCloud",
+      waveTheme: "fish",
     },
 
     notice: {
@@ -260,9 +260,9 @@ export default defineValaxyConfig<ThemeUserConfig>({
       rainbow: true,
     },
 
-    scrollToTop: false,
+    scrollToTop: true,
     scrollIndicator: true,
-    scrollLock: false,
+    scrollLock: true,
   },
 
   siteConfig: {

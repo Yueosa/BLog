@@ -3,7 +3,6 @@ import { defineValaxyConfig } from "valaxy";
 import { addonMeting } from "valaxy-addon-meting";
 import { addonWaline } from "valaxy-addon-waline";
 import { addonBangumi } from "valaxy-addon-bangumi";
-import pkg from "valaxy-theme-sakura/package.json";
 import { addonLightGallery } from "valaxy-addon-lightgallery";
 
 export default defineValaxyConfig<ThemeUserConfig>({
@@ -146,15 +145,9 @@ export default defineValaxyConfig<ThemeUserConfig>({
         ],
       },
       {
-        text: pkg.author.name,
+        text: 'YukiKoi',
         icon: "i-line-md-hazard-lights-filled",
-        link: pkg.author.url,
-        target: "_blank",
-      },
-      {
-        text: "关于",
-        icon: "i-fa-leaf",
-        link: pkg.author.url,
+        link: 'https://yeastar.xin',
         target: "_blank",
       },
       {

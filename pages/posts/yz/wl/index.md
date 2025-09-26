@@ -29,12 +29,15 @@ tags:
 
 ## | Linux 运维
 
+### | 前期准备 |
+
 #### |-> 开启SSH功能 (可选)
 
 ```ini
 # vim /etc/ssh/sshd_config
 Port 22
 PermitRootLogin yes
+PrintLastLog no # 关闭ssh日志 (可选)
 ```
 > 编辑sshd配置文件, 允许root用户登录, 端口22
 
@@ -76,28 +79,71 @@ echo "*********************************"
 
 若开启了`ssh`, 也可以使用 `scp login.sh root@[IP]:/etc/profile.d/` 批量上传脚本到服务器
 
-#### |-> 配置本地源
-
+#### |-> 修改时区
 
 ```shell
+timedatectl list-timezones | grep Asia/Shanghai # 检查系统是否有 Asia/Shanghai 时区
+timedatectl set-timezone Asia/Shanghai # 将时区设置为 Asia/Shanghai
+timedatectl | grep "Time zone" # 显示当前时区
+```
+
+#### |-> 配置本地DNS
+
+```bash
+# vim /etc/hosts
+IP 完全限定域名 主机名
+```
+
+#### |-> 关闭防火墙与SELinux
+
+```shell
+sudo systemctl stop firewalld && sudo systemctl disable firewalld
+# sudo vi /etc/selinux/config
+SELINUX=disabled
+```
+
+#### |-> 配置本地源
+
+```shell
+mkdir /media/cdrom
 mount /dev/sr0 /media/cdrom
 ```
+> 若有ISO挂载
 
 ```ini
 # vim /etc/apt/sources.list
 deb [trusted=yes] file:///media/cdrom fou main
 deb [trustes=yes] file:///mnt/packs ./
 ```
+> apt 包管理器
+
+```shell
+apt clean
+apt update
+```
+> apt 更新缓存
 
 ```ini
 # /etc/yum.repos.d/yum.repo
 [localrepo]
 name=CentOS Local Repo
-metalink=file://
-gpgcheck=1
+metalink=file:///media/cdrom
+enabled=1
+gpgcheck=0
 
 [localyum]
 name=CentOS Local Yum
-metalink=file://
-gpgcheck=1
+metalink=file:///mnt
+enabled=1
+gpgcheck=0
 ```
+> yum 包管理器
+
+```shell
+yum clean all
+yum makecache
+```
+> yum 更新缓存
+
+## | 服务部署 |
+

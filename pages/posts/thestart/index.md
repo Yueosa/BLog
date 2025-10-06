@@ -6,7 +6,8 @@ updated: 2025-08-28
 cover: /cover/thestart/cover01.png
 toc: true
 categories:
-  - 学习笔记
+  - 学习
+  - 博客搭建
 tags:
   - valaxy
   - blog

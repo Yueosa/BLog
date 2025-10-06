@@ -1,12 +1,12 @@
 ---
 title: 二进制逆向学习笔记 (3)
-subTitle: none
-date: none
+subTitle: 栈与特殊寄存器
+date: 2025-12-01
 updated: none
 cover: /cover/binary/cover_thethr.jpg
 toc: true
 categories:
-  - 学习笔记
+  - 学习
   - 二进制逆向
 tags:
   - 二进制

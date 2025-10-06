@@ -7,7 +7,7 @@ cover: /cover/kmyz/cover-wlsx.jpg
 toc: true
 password: kmyz-wlsx
 categories:
-  - 学习笔记
+  - 学习
   - 网络管理
 tags:
   - 计算机网络

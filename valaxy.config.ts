@@ -1,9 +1,9 @@
-import type { ThemeUserConfig } from "valaxy-theme-sakura";
 import { defineValaxyConfig } from "valaxy";
-import { addonMeting } from "valaxy-addon-meting";
-import { addonWaline } from "valaxy-addon-waline";
 import { addonBangumi } from "valaxy-addon-bangumi";
 import { addonLightGallery } from "valaxy-addon-lightgallery";
+import { addonMeting } from "valaxy-addon-meting";
+import { addonWaline } from "valaxy-addon-waline";
+import type { ThemeUserConfig } from "valaxy-theme-sakura";
 
 export default defineValaxyConfig<ThemeUserConfig>({
   theme: "sakura",
@@ -94,6 +94,11 @@ export default defineValaxyConfig<ThemeUserConfig>({
         link: "/categories",
       },
       {
+        icon: "i-fa6-solid:bookmark",
+        text: "标签",
+        link: "/tags",
+      },
+      {
         icon: "i-fa-archive",
         locale: "menu.archives",
         link: "/archives",
@@ -145,15 +150,10 @@ export default defineValaxyConfig<ThemeUserConfig>({
         ],
       },
       {
-        text: 'YukiKoi',
+        text: "YukiKoi",
         icon: "i-line-md-hazard-lights-filled",
-        link: 'https://yeastar.xin',
+        link: "https://yeastar.xin",
         target: "_blank",
-      },
-      {
-        icon: "i-fa6-solid:bookmark",
-        text: "标签",
-        link: "/tags",
       },
       {
         text: "RSS",

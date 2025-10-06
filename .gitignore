@@ -33,4 +33,4 @@ public/feed.json
 
 # local
 
-.vscode/
+.vscode/*

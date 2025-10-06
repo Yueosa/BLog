@@ -1,7 +1,7 @@
 ---
 title: 二进制逆向学习笔记 (3)
 subTitle: 栈与特殊寄存器
-date: 2025-12-01
+date: 2025-10-06
 updated: none
 cover: /cover/binary/cover_thethr.jpg
 toc: true

@@ -56,10 +56,10 @@ export default defineValaxyConfig<ThemeUserConfig>({
       waveTheme: "fish",
     },
 
-    notice: {
-      message:
-        '<b>这是一个公告信息, 主题开源地址请见: <a href="https://github.com/WRXinYue/valaxy-theme-sakura">https://github.com/WRXinYue/valaxy-theme-sakura</a></br>',
-    },
+    //notice: {
+    //  message:
+    //    '<b>这是一个公告信息, 主题开源地址请见: <a href="https://github.com/WRXinYue/valaxy-theme-sakura">https://github.com/WRXinYue/valaxy-theme-sakura</a></br>',
+    //},
 
     pagination: {
       animation: true,

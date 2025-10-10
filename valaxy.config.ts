@@ -1,9 +1,9 @@
-import type { ThemeUserConfig } from "valaxy-theme-sakura";
 import { defineValaxyConfig } from "valaxy";
-import { addonMeting } from "valaxy-addon-meting";
-import { addonWaline } from "valaxy-addon-waline";
 import { addonBangumi } from "valaxy-addon-bangumi";
 import { addonLightGallery } from "valaxy-addon-lightgallery";
+import { addonMeting } from "valaxy-addon-meting";
+import { addonWaline } from "valaxy-addon-waline";
+import type { ThemeUserConfig } from "valaxy-theme-sakura";
 
 export default defineValaxyConfig<ThemeUserConfig>({
   theme: "sakura",
@@ -56,10 +56,10 @@ export default defineValaxyConfig<ThemeUserConfig>({
       waveTheme: "fish",
     },
 
-    notice: {
-      message:
-        '<b>这是一个公告信息, 主题开源地址请见: <a href="https://github.com/WRXinYue/valaxy-theme-sakura">https://github.com/WRXinYue/valaxy-theme-sakura</a></br>',
-    },
+    //notice: {
+    //  message:
+    //    '<b>这是一个公告信息, 主题开源地址请见: <a href="https://github.com/WRXinYue/valaxy-theme-sakura">https://github.com/WRXinYue/valaxy-theme-sakura</a></br>',
+    //},
 
     pagination: {
       animation: true,
@@ -92,6 +92,11 @@ export default defineValaxyConfig<ThemeUserConfig>({
         icon: "i-line-md-folder-twotone",
         locale: "menu.categories",
         link: "/categories",
+      },
+      {
+        icon: "i-fa6-solid:bookmark",
+        text: "标签",
+        link: "/tags",
       },
       {
         icon: "i-fa-archive",
@@ -145,15 +150,10 @@ export default defineValaxyConfig<ThemeUserConfig>({
         ],
       },
       {
-        text: 'YukiKoi',
+        text: "YukiKoi",
         icon: "i-line-md-hazard-lights-filled",
-        link: 'https://yeastar.xin',
+        link: "https://yeastar.xin",
         target: "_blank",
-      },
-      {
-        icon: "i-fa6-solid:bookmark",
-        text: "标签",
-        link: "/tags",
       },
       {
         text: "RSS",

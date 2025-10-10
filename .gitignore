@@ -14,6 +14,7 @@ temp/
 dist
 dist-ssr
 node_modules
+.vscode/
 .idea/
 *.log
 
@@ -30,3 +31,4 @@ public/atom.xml
 
 # valaxy rss
 public/feed.json
+

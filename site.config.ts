@@ -11,7 +11,7 @@ export default defineSiteConfig({
   subtitle: "欢迎来到我的世界, 这里没有神, 只有我构筑的代码、记忆和光",
   author: {
     avatar:
-      "avatar-modified.png",
+      "/avatar-modified.png",
     name: "Lian",
     /** 还支持email, link, intro */
     status: {
@@ -70,7 +70,7 @@ export default defineSiteConfig({
   readTime: {
     speed: {
       cn: 300, // 默认 300
-      en: 100, // 默认 100
+      en: 100, // 默认 100 
     },
   },
   },

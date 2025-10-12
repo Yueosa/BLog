@@ -102,6 +102,8 @@ IP 完全限定域名 主机名
 sudo systemctl stop firewalld && sudo systemctl disable firewalld
 # sudo vi /etc/selinux/config
 SELINUX=disabled
+
+# setenforce 0
 ```
 
 #### |-> 配置本地源
@@ -140,9 +142,12 @@ gpgcheck=0
 
 [localyum]
 name=CentOS Local Yum
-metalink=file:///mnt
+baseurl=file:///mnt
 enabled=1
 gpgcheck=0
+
+echo "/dev/sr0 /mnt iso9660 defaults 0 0" >> /etc/fstab # 永久挂载
+mount -a
 ```
 
 > yum 更新缓存
@@ -154,7 +159,7 @@ yum makecache
 
 ## | 服务部署 |
 
-#### [ ISP ]-> DHCP
+#### |-> DHCP SERVER
 
 > 安装 DHCP 服务包
 
@@ -182,6 +187,84 @@ subnet 81.6.63.0 netmask 255.255.255.0 {
 }
 ```
 
+> 重启服务
+
+```shell
+systemctl restart isc-dhcp-server
+```
+
+#### |-> DHCP RELAY
+
+```shell
+apt install isc-dhcp-relay
+
+vim /etc/default/isc-dhcp-relay
+
+# dhcrelay 192.168.100.100
+
+SERVERS = "dhcp-server-ip"
+INTERFACES="代理网卡, 空格分割"
+```
+
+#### | -> Disk
+
+```shell
+lsblk -l # 查看
+
+apt-get install mdadm -y # 安装mdadm服务
+
+mdadm -C -n 3 -l 5 -a yes -x 1 /dev/md0 /dev/sd{b,c,d,e} # 进行配置
+```
+
+#### | -> DNS
+
+主从 DNS(必有) + CHROOT(可能) + 根域
+
+Server01
+```shell
+yum -y install bind bind-utils
+
+# vim etc/named.conf
+127.0.0.1/localhost >> any
+
+forwarders {ip;}; # 向更高层转发
+dnssec-* no
+
+systemctl restart named
+
+# vim etc/named.efc1912.zones
+Zone "域" IN {
+  type master;
+  file "1";
+  allow-update { none; };
+}
+
+反向解析
+Zone "反网络号.in-addr-arpa" IN {
+  type master;
+  file "2";
+  allow-update { none; };
+}
+
+cd /var/named
+cp -a named.loop* 2
+cp -a named.local* 1
+
+# vim 1
+serial 0 > 2
+
+www A ip
+
+# vim 2
+201/254 PTR 域名
+
+named-checkconf -z
+systemctl restart named
+
+# 地址解析
+nslookup www.sdskills.net
+```
+
 ---
 
 # | 锐捷设备配置命令
@@ -199,19 +282,10 @@ subnet 81.6.63.0 netmask 255.255.255.0 {
 1. 按照需求配置 VLAN、生成树、端口安全等；
 2. 按照需求配置 DHCP 服务、DHCP 中继与 DHCP 防御等 ；
 3. 按照网络规划配置静态、RIP、OSPF、BGP 等路由技术；
-4. 按照需求配置 IPv� 地址、IPv� 路由及各种隧道；
+4. 按照需求配置 IPv6 地址、IPv6 路由及各种隧道；
 5. 按照需求配置链路聚合、DLDP、设备虚拟化、MSTP+VRRP 等；
-6. 按照需求配置 L�MPLS，L�MPLS 等 VPN 技术；
-7. 按照数据分流需求配置策略路由、路由策略等
+6. 按照数据分流需求配置策略路由、路由策略等
 
 #### 无线网络配置
 
 1. 完成无线网络规划、设计 AP 点位图、输出热图；
-2. 按照需求配置 SSID、转发模式、冗余模式等；
-3. 按照需求配置 AP 隔离、流量限制、身份认证等
-
-#### 出口网络配置
-
-1. 按照需求配置网络地址转换；
-2. 按照需求配置出口认证、流量控制等；
-3. 按照需求配置 L�TP、GRE、IPsec 等技术

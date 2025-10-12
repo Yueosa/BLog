@@ -269,15 +269,13 @@ nslookup www.sdskills.net
 
 # | 锐捷设备配置命令
 
-## 比赛要求
-
-#### 基础网络配置
+## 基础网络配置
 
 1. 根据要求完成网络设备名称、接口、远程登陆等配置；
 2. 根据要求完成设备软件版本更新，设备密码恢复等；
 3. 完成网络测试和验证
 
-#### 有线网络配置
+## 有线网络配置
 
 1. 按照需求配置 VLAN、生成树、端口安全等；
 2. 按照需求配置 DHCP 服务、DHCP 中继与 DHCP 防御等 ；
@@ -286,6 +284,308 @@ nslookup www.sdskills.net
 5. 按照需求配置链路聚合、DLDP、设备虚拟化、MSTP+VRRP 等；
 6. 按照数据分流需求配置策略路由、路由策略等
 
-#### 无线网络配置
+> 配置命令示例
+
+#### |-> 基础配置
+
+**VLAN**
+
+```bash
+# 创建VLAN
+vlan [NUMBER]
+  name [NAME]
+
+# 配置VLAN接口
+interface vlan [NUMBER]
+  ip address [IP] [MASK]
+  ipv6 enable
+  ipv6 address [IP]/[MASK]
+  exit
+```
+
+**SSH**
+
+```bash
+# 启用ssh服务
+enable service ssh-server
+ip ssh version 2
+
+# 创建用户和密码
+username [NAME] privilege 15 password [LOGIN_PASSWORD]
+enable password [ENABLE_PASSWORD]
+
+# 配置vty线路
+line vty 0 4
+  transport input ssh
+  login local
+  exit
+
+# 生成rsa密钥
+crypto key generate rsa
+  2048
+```
+
+**SNMPv3**
+
+```bash
+# 启用snmp服务
+enable service snmp-agent
+
+# 创建snmp组和用户
+snmp-server group test v3 priv read default write default
+snmp-server user Admin!@# test v3 auth sha Test!@# priv aes128 Test\$#@!
+
+# 配置trap目标
+snmp-server host [IP] traps version 3 priv Admin!@#
+snmp-server enable traps
+```
+
+#### |-> 有线网络配置
+
+**静态路由**
+
+```bash
+# 默认路由
+ip route 0.0.0.0 0.0.0.0 [下一跳地址]
+
+# 静态路由
+ip route [目标网络] [子网掩码] [下一跳地址]
+ip route [目标网络] [子网掩码] [出接口]
+
+# 浮动静态路由（管理距离）
+ip route 0.0.0.0 0.0.0.0 [下一跳地址] 10
+```
+
+**RSTP**
+
+```bash
+# 启用RSTP模式
+spanning-tree mode rstp
+
+# 主根桥
+spanning-tree mst 0 priority 0
+
+# 备份根桥
+spanning-tree mst 0 priority 0
+
+# 全局启用生成树
+spanning-tree
+```
+
+**环路检测 端口保护**
+
+```bash
+# 配置端口保护
+interface [Port]
+  sw protected
+  #  sw = switchport
+  storm-control broadcast level 10
+  storm-control action shutdown
+  exit
+
+# 启用arp检查
+  interface [Port]
+  arp-check
+  exit
+```
+
+**链路聚合**
+
+```bash
+# 创建端口组
+interface range [Port Group]
+  port-group 1 mode active
+  exit
+
+# 配置居合接口
+interface aggregatePort 1
+  sw mode trunk
+  sw trunk allowed vlan only [VLAN],[VLAN]
+  #  sw = switchport
+  exit
+```
+
+**DHCP**
+
+```bash
+# 启用DHCP服务
+service dhcp
+
+# 创建DHCP地址池
+ip dhcp pool vlan[NUMBER]
+  network [IP] [MASK] # 网络地址
+  default-router [DEFAULT_IP] # 网关/起始地址
+  dns-server 8.8.8.8
+  exit
+```
+
+**DHCP**
+
+```bash
+# 启用DHCP中继
+service dhcp
+
+# 接口配置DHCP中继
+interface [接口名称]
+ ip helper-address [DHCP服务器地址]
+
+# 全局DHCP中继
+ip dhcp relay information option
+```
+
+**DHCP安全**
+
+```bash
+# 启用
+ip dhcp snooping
+
+# 配置信任端口
+interface [Port]
+  ip dhcp snooping trust
+  exit
+
+# 配置非信任端口
+interface [Port]
+  sw protected
+  #  sw = switchport
+  ip verify source port-security
+  ipv6 verify source port-security
+  exit
+```
+
+**RIP**
+
+```bash
+# 启用RIP
+router rip
+ version 2
+ network [网络地址]
+ no auto-summary
+
+# 重分布其他路由
+redistribute connected
+redistribute static
+redistribute ospf [进程号] metric [跳数]
+```
+
+**BGP**
+
+```bash
+# BGP基本配置
+router bgp [AS号]
+ bgp router-id [路由器ID]
+ neighbor [邻居IP] remote-as [AS号]
+ neighbor [邻居IP] update-source [接口]
+ 
+# IPv4地址族
+address-family ipv4
+ neighbor [邻居IP] activate
+ network [网络地址] mask [子网掩码]
+ exit-address-family
+
+# VPNv4地址族（MP-BGP）
+address-family vpnv4 unicast
+ neighbor [邻居IP] activate
+ neighbor [邻居IP] send-community extended
+ exit-address-family
+```
+
+**OSPF**
+
+```bash
+# 启用OSPF进程
+router ospf 10
+
+# 宣告网络
+  network 56.1.1.1 0.0.0.0 area 0
+  network 20.10.10.5 0.0.0.0 area 0
+
+# 重分布直连路由
+redistribute connected metric-type 1 subnets
+ exit
+```
+
+**GRE**
+
+```bash
+# 创建隧道接口
+interface tunnel 0
+ ip address 10.5.1.1 255.255.255.0
+ tunnel source gigabitEthernet 0/2    # 根据实际接口调整
+ tunnel destination 25.1.1.1          # 根据对端地址调整
+ tunnel mode gre ip
+ exit
+```
+
+**路由过滤**
+
+```bash
+# 创建前缀列表
+ip prefix-list filter seq 5 permit 172.16.0.0/22 le 24
+ip prefix-list filter seq 10 permit 20.20.10.0/24
+
+# 应用分布列表
+router ospf 12
+ distribute-list prefix filter in
+ exit
+```
+
+**IPv6**
+
+```bash
+# 启用IPv6路由
+ipv6 unicast-routing
+
+# 配置IPv6地址
+interface vlan 20
+ ipv6 enable
+ ipv6 address 2002:1101:102::254/64
+ no ipv6 nd suppress-ra
+ exit
+
+# 配置OSPFv3
+ipv6 router ospf 11
+ router-id 10.10.10.100
+ redistribute connected metric-type 1
+ exit
+
+interface vlan 20
+ ipv6 ospf 11 area 0
+ exit
+```
+
+#### |-> 关键配置项目
+
+**三层交换机**
+
+```bash
+# S1/S2配置示例
+interface GigabitEthernet 0/24
+ no switchport                    # 启用三层功能
+ ip address 10.1.0.1 255.255.255.252
+ mpls ip                         # MPLS标签交换
+
+# VRF配置
+ip vrf [VRF名称]
+ rd [RD值]
+ route-target both [RT值]
+```
+
+**OSPF多线程**
+
+```bash
+# 骨干区域OSPF
+router ospf 10
+ router-id [路由器ID]
+ network [网络] [反掩码] area 0
+
+# VRF OSPF
+router ospf [进程号] vrf [VRF名称]
+ router-id [路由器ID]
+ redistribute bgp subnets
+ network [网络] [反掩码] area 0
+```
+
+## 无线网络配置
 
 1. 完成无线网络规划、设计 AP 点位图、输出热图；

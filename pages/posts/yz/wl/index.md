@@ -27,6 +27,13 @@ tags:
 
 # | Linux 运维
 
+赶时间小技巧
+
+```shell
+# 安装服务快速启动并且开机自启的方法, 以nginx为例
+yum install nginx -y && systemctl start --now && systemctl status nginx
+```
+
 ### | 前期准备 |
 
 #### |-> 开启 SSH 功能 (可选)
@@ -35,15 +42,30 @@ tags:
 
 ```ini
 # vim /etc/ssh/sshd_config
-Port 22
+Port 22 # 端口号
 PermitRootLogin yes
 PrintLastLog no # 关闭ssh日志 (可选)
+MaxAuthTries 3 # 最大尝试数
+AllowUsers user01 # 允许用户
+LoginGraceTIme 1m # 超时时间
+
+# 日志配置
+SyslogFacility local0
+
+# vim /etc/rsyslog
+
+local0.* /var/log/ssh.log
+
+# vim /etc/hosts.allow
+sshd: insideCli #允许登录
+# vim /etc/hosts.deny
+sshd: ALL #禁止登录
 ```
 
 > 重启 sshd 服务
 
 ```shell
-systemctl restart sshd
+systemctl restart sshd && systemctl restart rsyslog
 ```
 
 #### |-> 改主机名, 写登录脚本
@@ -136,7 +158,7 @@ apt update
 # /etc/yum.repos.d/yum.repo
 [localrepo]
 name=CentOS Local Repo
-metalink=file:///media/cdrom
+baseurl=file:///media/cdrom
 enabled=1
 gpgcheck=0
 
@@ -184,6 +206,12 @@ subnet 81.6.63.0 netmask 255.255.255.0 {
   option domain-name "chinaskills.cn";
   default-lease-time 600;
   max-lease-time 7200
+}
+
+# 为特定设备指定IP地址
+host insidecli {
+  hardware ethernet [MAC];
+  fixed-address [IP];
 }
 ```
 

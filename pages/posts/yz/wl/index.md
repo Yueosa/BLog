@@ -31,7 +31,7 @@ tags:
 
 ```shell
 # 安装服务快速启动并且开机自启的方法, 以nginx为例
-yum install nginx -y && systemctl start --now && systemctl status nginx
+yum install nginx -y && systemctl enable --now && systemctl status nginx
 ```
 
 ### | 前期准备 |
@@ -52,9 +52,11 @@ LoginGraceTIme 1m # 超时时间
 # 日志配置
 SyslogFacility local0
 
+
 # vim /etc/rsyslog
 
 local0.* /var/log/ssh.log
+
 
 # vim /etc/hosts.allow
 sshd: insideCli #允许登录
@@ -68,7 +70,13 @@ sshd: ALL #禁止登录
 systemctl restart sshd && systemctl restart rsyslog
 ```
 
-#### |-> 改主机名, 写登录脚本
+```shell
+# 客户端密钥以及免密钥登录
+ssh-keygen -t rsa -b 4096
+ssh-copy-id -p 2023 user@server_ip # scp -p 2023 -i ~/.ssh/id_rea user@server_ip
+```
+
+#### |-> 改主机名
 
 > 修改主机名称
 
@@ -76,32 +84,6 @@ systemctl restart sshd && systemctl restart rsyslog
 hostnamectl hostname [NAME] # CentOS
 hostnamectl set-hostname [NAME] # UOS
 ```
-
-> 登录脚本
-
-```bash
-# vim /etc/profile.d/login.sh
-
-#!bin/bash
-
-title="ChinaSkills 2025 -CBK"
-module="MOdule C Linux"
-name=$(hostname)
-time=$(date)
-# cat /etc/os-release
-version="CentOS Stream 10"
-
-echo "*********************************"
-echo "${title}"
-echo "${module}"
-echo ""
-echo ">>${name}<<"
-echo ">>${verison}<<"
-echo ">>${time}<<"
-echo "*********************************"
-```
-
-若开启了`ssh`, 也可以使用 `scp login.sh root@[IP]:/etc/profile.d/` 批量上传脚本到服务器
 
 #### |-> 修改时区
 
@@ -241,7 +223,7 @@ lsblk -l # 查看
 
 apt-get install mdadm -y # 安装mdadm服务
 
-mdadm -C -n 3 -l 5 -a yes -x 1 /dev/md0 /dev/sd{b,c,d,e} # 进行配置
+mdadm -C /dev/md0 -l 5 -n 3 -x 1 -a yes /dev/md0 /dev/sd{b,c,d,e} # 进行配置
 ```
 
 #### | -> DNS
@@ -249,18 +231,25 @@ mdadm -C -n 3 -l 5 -a yes -x 1 /dev/md0 /dev/sd{b,c,d,e} # 进行配置
 主从 DNS(必有) + CHROOT(可能) + 根域
 
 Server01
+
 ```shell
 yum -y install bind bind-utils
 
 # vim etc/named.conf
-127.0.0.1/localhost >> any
+# 第11行左右，允许任何IP监听
+listen-on port 53 { any; };
 
-forwarders {ip;}; # 向更高层转发
-dnssec-* no
+# 第17行左右，允许任何客户端查询
+allow-query { any; };
+
+# 第34-35行，关闭DNSSEC（简化配置）
+dnssec-enable no;
+dnssec-validation no;
 
 systemctl restart named
 
 # vim etc/named.efc1912.zones
+# 这个文件有配置模板, 不是很难
 Zone "域" IN {
   type master;
   file "1";
@@ -281,9 +270,11 @@ cp -a named.local* 1
 # vim 1
 serial 0 > 2
 
+# 正向格式是 [域名 A IP]
 www A ip
 
 # vim 2
+# 反向格式是 [地址 PTR 完整域名]
 201/254 PTR 域名
 
 named-checkconf -z
@@ -293,9 +284,62 @@ systemctl restart named
 nslookup www.sdskills.net
 ```
 
+#### |-> 省赛大概率不考
+
+> 登录脚本
+
+```bash
+# vim /etc/profile.d/login.sh
+
+#!bin/bash
+
+title="ChinaSkills 2025 -CBK"
+module="MOdule C Linux"
+name=$(hostname)
+time=$(date)
+# cat /etc/os-release
+version="CentOS Stream 10"
+
+echo "*********************************"
+echo "${title}"
+echo "${module}"
+echo ""
+echo ">>${name}<<"
+echo ">>${verison}<<"
+echo ">>${time}<<"
+echo "*********************************"
+```
+
+若开启了`ssh`, 也可以使用 `scp login.sh root@[IP]:/etc/profile.d/` 批量上传脚本到服务器
+
 ---
 
 # | 锐捷设备配置命令
+
+```shell
+# 基础命令
+enable # 特权模式
+config # 全局配置模式
+hostname [NAME] # 设备名
+write # 保存配置
+
+# 查询命令
+show interfaces status
+show ip interface brief
+
+show vlan
+show vlan brief
+
+show mac-address-table
+
+show ip route
+
+show ip dhcp binding
+
+show ip ospf neighbor
+```
+
+> 标注 **(x)** 的是必看项
 
 ## 基础网络配置
 
@@ -316,9 +360,13 @@ nslookup www.sdskills.net
 
 #### |-> 基础配置
 
-**VLAN**
+**VLAN** (x)
 
 ```bash
+# 启用三层交换机
+interface GigabitEthernet 0/24
+ no switchport
+
 # 创建VLAN
 vlan [NUMBER]
   name [NAME]
@@ -329,9 +377,16 @@ interface vlan [NUMBER]
   ipv6 enable
   ipv6 address [IP]/[MASK]
   exit
+
+# 接口VLAN分配
+interface [PORT]
+  sw mode [PORT_MODE]
+  sw access vlan [NUMBER]
+  se trunk allowed vlan [NUMBER]
+  no shutdown
 ```
 
-**SSH**
+**SSH** (x)
 
 ```bash
 # 启用ssh服务
@@ -340,7 +395,7 @@ ip ssh version 2
 
 # 创建用户和密码
 username [NAME] privilege 15 password [LOGIN_PASSWORD]
-enable password [ENABLE_PASSWORD]
+enable password [ENABLE_PASSWORD] # 特权模式密码
 
 # 配置vty线路
 line vty 0 4
@@ -353,11 +408,11 @@ crypto key generate rsa
   2048
 ```
 
-**SNMPv3**
+**SNMPv3**(命令信息不全,不推荐)
 
 ```bash
 # 启用snmp服务
-enable service snmp-agent
+enable service snmp-agent # snmp-server enable
 
 # 创建snmp组和用户
 snmp-server group test v3 priv read default write default
@@ -370,7 +425,7 @@ snmp-server enable traps
 
 #### |-> 有线网络配置
 
-**静态路由**
+**静态路由** (x)
 
 ```bash
 # 默认路由
@@ -384,7 +439,7 @@ ip route [目标网络] [子网掩码] [出接口]
 ip route 0.0.0.0 0.0.0.0 [下一跳地址] 10
 ```
 
-**RSTP**
+**RSTP** (x)
 
 ```bash
 # 启用RSTP模式
@@ -398,6 +453,14 @@ spanning-tree mst 0 priority 0
 
 # 全局启用生成树
 spanning-tree
+```
+
+**边缘端口+BPDU**
+
+```shell
+spanning-tree portfast
+spanning-tree bpduguard enable
+errdisable recovery interval 200
 ```
 
 **环路检测 端口保护**
@@ -421,11 +484,11 @@ interface [Port]
 
 ```bash
 # 创建端口组
-interface range [Port Group]
+interface range [Port range]
   port-group 1 mode active
   exit
 
-# 配置居合接口
+# 配置聚合接口
 interface aggregatePort 1
   sw mode trunk
   sw trunk allowed vlan only [VLAN],[VLAN]
@@ -433,7 +496,7 @@ interface aggregatePort 1
   exit
 ```
 
-**DHCP**
+**DHCP-Server** (x)
 
 ```bash
 # 启用DHCP服务
@@ -447,7 +510,7 @@ ip dhcp pool vlan[NUMBER]
   exit
 ```
 
-**DHCP**
+**DHCP-Delay** (x)
 
 ```bash
 # 启用DHCP中继
@@ -461,7 +524,7 @@ interface [接口名称]
 ip dhcp relay information option
 ```
 
-**DHCP安全**
+**DHCP-Snooping** (x)
 
 ```bash
 # 启用
@@ -481,7 +544,7 @@ interface [Port]
   exit
 ```
 
-**RIP**
+**RIP** (x)
 
 ```bash
 # 启用RIP
@@ -504,7 +567,7 @@ router bgp [AS号]
  bgp router-id [路由器ID]
  neighbor [邻居IP] remote-as [AS号]
  neighbor [邻居IP] update-source [接口]
- 
+
 # IPv4地址族
 address-family ipv4
  neighbor [邻居IP] activate
@@ -518,7 +581,7 @@ address-family vpnv4 unicast
  exit-address-family
 ```
 
-**OSPF**
+**OSPF** (x)
 
 ```bash
 # 启用OSPF进程
@@ -531,6 +594,10 @@ router ospf 10
 # 重分布直连路由
 redistribute connected metric-type 1 subnets
  exit
+
+# ospf多线程
+router ospf 11 vrf [NAME]
+network [IP] [mASK] area [ID]
 ```
 
 **GRE**
@@ -582,38 +649,8 @@ interface vlan 20
  exit
 ```
 
-#### |-> 关键配置项目
-
-**三层交换机**
-
-```bash
-# S1/S2配置示例
-interface GigabitEthernet 0/24
- no switchport                    # 启用三层功能
- ip address 10.1.0.1 255.255.255.252
- mpls ip                         # MPLS标签交换
-
-# VRF配置
-ip vrf [VRF名称]
- rd [RD值]
- route-target both [RT值]
-```
-
-**OSPF多线程**
-
-```bash
-# 骨干区域OSPF
-router ospf 10
- router-id [路由器ID]
- network [网络] [反掩码] area 0
-
-# VRF OSPF
-router ospf [进程号] vrf [VRF名称]
- router-id [路由器ID]
- redistribute bgp subnets
- network [网络] [反掩码] area 0
-```
-
 ## 无线网络配置
 
 1. 完成无线网络规划、设计 AP 点位图、输出热图；
+
+无

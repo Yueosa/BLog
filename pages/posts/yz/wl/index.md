@@ -2,7 +2,7 @@
 title: 网络赛项学习笔记
 subtitle: Linux系统运维
 date: 2025-09-15
-updated: 2025-09-22
+updated: 2025-10-13
 cover: /cover/kmyz/cover-wlsx.jpg
 toc: true
 password: kmyz-wlsx

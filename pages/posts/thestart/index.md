@@ -715,9 +715,6 @@ export default defineValaxyConfig<ThemeUserConfig>({
 
 | 正在施工
 
-### 📎 基于 `VPS` 的 部署方案
-
-| 正在施工
 
 ## ❓ 常见问题
 

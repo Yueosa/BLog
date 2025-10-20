@@ -2,6 +2,7 @@ import { defineValaxyConfig } from "valaxy";
 import { addonBangumi } from "valaxy-addon-bangumi";
 import { addonLightGallery } from "valaxy-addon-lightgallery";
 import { addonMeting } from "valaxy-addon-meting";
+import { addonVercount } from "valaxy-addon-vercount";
 import { addonWaline } from "valaxy-addon-waline";
 import type { ThemeUserConfig } from "valaxy-theme-sakura";
 
@@ -289,6 +290,9 @@ export default defineValaxyConfig<ThemeUserConfig>({
       bgmEnabled: false,
     }),
     addonLightGallery(),
+    addonVercount({
+      api: 'cn',
+    }),
   ],
 
   vite: {

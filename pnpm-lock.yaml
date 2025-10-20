@@ -35,12 +35,15 @@ importers:
       valaxy-addon-twikoo:
         specifier: ^0.0.3
         version: 0.0.3(valaxy@0.23.6(@babel/parser@7.27.7)(@nuxt/kit@3.17.5)(@types/markdown-it@14.1.2)(@types/node@24.0.7)(@vue/compiler-dom@3.5.17)(@vue/compiler-sfc@3.5.17)(axios@1.10.0)(eslint@9.30.0(jiti@2.4.2))(postcss@8.5.6)(rollup@4.44.1)(terser@5.43.1)(typescript@5.8.3)(yaml@2.8.0))
+      valaxy-addon-vercount:
+        specifier: ^0.0.7
+        version: 0.0.7
       valaxy-addon-waline:
         specifier: ^0.2.1
         version: 0.2.1(typescript@5.8.3)(valaxy@0.23.6(@babel/parser@7.27.7)(@nuxt/kit@3.17.5)(@types/markdown-it@14.1.2)(@types/node@24.0.7)(@vue/compiler-dom@3.5.17)(@vue/compiler-sfc@3.5.17)(axios@1.10.0)(eslint@9.30.0(jiti@2.4.2))(postcss@8.5.6)(rollup@4.44.1)(terser@5.43.1)(typescript@5.8.3)(yaml@2.8.0))
       valaxy-theme-sakura:
         specifier: ^0.10.2
-        version: 0.10.2(@nuxt/kit@3.17.5)(valaxy-addon-hitokoto@0.0.1)(valaxy-addon-vercount@0.0.6)(vue@3.5.17(typescript@5.8.3))
+        version: 0.10.2(@nuxt/kit@3.17.5)(valaxy-addon-hitokoto@0.0.1)(valaxy-addon-vercount@0.0.7)(vue@3.5.17(typescript@5.8.3))
       valaxy-theme-yun:
         specifier: 0.23.5
         version: 0.23.5(vue@3.5.17(typescript@5.8.3))
@@ -3754,8 +3757,8 @@ packages:
     peerDependencies:
       valaxy: latest
 
-  valaxy-addon-vercount@0.0.6:
-    resolution: {integrity: sha512-FqxULU81LofkpSvAzxXmdF4utV3tnKzEKAGYSGyV+i8cYJcf1s+4mbM3PtgYEeP5anLzXBAA/e4+pc0Z0h+Gbw==}
+  valaxy-addon-vercount@0.0.7:
+    resolution: {integrity: sha512-hWJLvMM4xrbWlXaIF/MMDsQznTCFauSC2H7NmCiWhssQ6bEVuLcLIKGQ2YOd7DmswmhwZKmHSSylkVgq+6dLqQ==}
 
   valaxy-addon-waline@0.2.1:
     resolution: {integrity: sha512-A95cnjyAsdypP/QJWIYbfqPyCOhGeMcbFfqSZnJxdAutUdgHH3gQBRrUM6G+/4KR6YHYmk2thNrpGRlGC6CWLg==}
@@ -8096,7 +8099,7 @@ snapshots:
     dependencies:
       valaxy: 0.23.6(@babel/parser@7.27.7)(@nuxt/kit@3.17.5)(@types/markdown-it@14.1.2)(@types/node@24.0.7)(@vue/compiler-dom@3.5.17)(@vue/compiler-sfc@3.5.17)(axios@1.10.0)(eslint@9.30.0(jiti@2.4.2))(postcss@8.5.6)(rollup@4.44.1)(terser@5.43.1)(typescript@5.8.3)(yaml@2.8.0)
 
-  valaxy-addon-vercount@0.0.6:
+  valaxy-addon-vercount@0.0.7:
     dependencies:
       peerjs: 1.5.5
       uuid: 10.0.0
@@ -8108,7 +8111,7 @@ snapshots:
     transitivePeerDependencies:
       - typescript
 
-  valaxy-theme-sakura@0.10.2(@nuxt/kit@3.17.5)(valaxy-addon-hitokoto@0.0.1)(valaxy-addon-vercount@0.0.6)(vue@3.5.17(typescript@5.8.3)):
+  valaxy-theme-sakura@0.10.2(@nuxt/kit@3.17.5)(valaxy-addon-hitokoto@0.0.1)(valaxy-addon-vercount@0.0.7)(vue@3.5.17(typescript@5.8.3)):
     dependencies:
       '@ctrl/tinycolor': 4.1.0
       '@iconify-json/fa6-solid': 1.2.3
@@ -8117,7 +8120,7 @@ snapshots:
       lenis: 1.3.4(@nuxt/kit@3.17.5)(vue@3.5.17(typescript@5.8.3))
       typeit: 8.8.7
       valaxy-addon-hitokoto: 0.0.1
-      valaxy-addon-vercount: 0.0.6
+      valaxy-addon-vercount: 0.0.7
       vue-progressive-image: 5.0.4(vue@3.5.17(typescript@5.8.3))
     transitivePeerDependencies:
       - '@nuxt/kit'

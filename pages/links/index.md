@@ -7,6 +7,7 @@ links:
   - rss: https://www.yunyoujun.cn/atom.xml
   - rss: https://sakura.wrxinyue.org/atom.xml
   - rss: https://sakura.valaxy.site/atom.xml
+  - rss: https://www.xrgzs.top/atom.xml
 random: true
 comment: false
 ---

@@ -39,7 +39,7 @@ export default defineValaxyConfig<ThemeUserConfig>({
 
     hero: {
       title: "Welcome~",
-      motto: "往者不可谏，来者犹可追",
+      motto: "For you, I spare no sincerity even in my blues.",
       // 首页轮播图片
       urls: [
         "https://valaxy-theme-sakura.s3.bitiful.net/wallpaper-2025%2Fwallhaven-858k3j.jpg",

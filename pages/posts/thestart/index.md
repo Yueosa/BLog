@@ -707,14 +707,6 @@ export default defineValaxyConfig<ThemeUserConfig>({
 });
 ```
 
-### 📎 `site-config` 配置
-
-| 正在施工
-
-### 📎 `/pages/posts` 简单说明 {#pages-posts-note}
-
-| 正在施工
-
 
 ## ❓ 常见问题
 

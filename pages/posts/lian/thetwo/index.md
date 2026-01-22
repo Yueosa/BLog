@@ -16,7 +16,7 @@ tags:
 
 这里是 `YukiLog` 的数据库!
 
-##### 数据库表结构
+## 数据库表结构
 
 ```sql
 -- 1. 用户表 (Users)
@@ -31,7 +31,7 @@ CREATE TABLE users (
   role VARCHAR(20) DEFAULT 'user',      -- 角色: admin, user
   created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
-)
+);
 
 -- 2. 分类表 (Categories)
 -- 文章的分类, 比如 "技术", "生活", "随笔"
@@ -42,7 +42,7 @@ CREATE TABLE categories (
   description TEXT,                     -- 分类描述
   created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
-)
+);
 
 -- 3. 标签表 (Tags)
 -- 比分类更灵活, 比如 "Rust", "Axum", "Vue"
@@ -51,7 +51,7 @@ CREATE TABLE tags (
   name VARCHAR(50) NOT NULL,            -- 标签名
   slug VARCHAR(50) NOT NULL UNIQUE,     -- URL 友好名字
   created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
-)
+);
 
 -- 4. 文章表 (POsts)
 -- 博客的核心
@@ -74,7 +74,7 @@ CREATE TABLE posts (
   published_at TIMESTAMP WITH TIME ZONE, -- 真正发布的时间（可能与创建时间不同）
   created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
-)
+);
 
 -- 5. 文章-标签关联表 (Post_Tags)
 -- 多对多关系: 一篇文章可以有多个标签
@@ -82,7 +82,7 @@ CREATE TABLE post_tags (
   post_id BIGINT REFERENCES posts(id) ON DELETE CASCADE,  -- 文章ID
   tag_id BIGINT REFERENCES tags(id) ON DELETE CASCADE     -- 标签ID
   PRIMARY KEY (post_id, tag_id)
-)
+);
 
 -- 6. 评论表 (Comments)
 -- 支持无限层级嵌套评论 (楼中楼)
@@ -109,7 +109,7 @@ CREATE TABLE comments (
   ip VARCHAR(45),                       -- 记录 IP (防灌水)
 
   created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
-)
+);
 
 -- 7. 友链表 (Links)
 -- 用于存放友链信息
@@ -122,7 +122,7 @@ CREATE TABLE links (
   link_status VARCHAR(20) NOT NULL DEFAULT 'broken',  -- 站点状态 active, pending, broken
   created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
-)
+);
 
 -- 索引优化 (Rust 代码跑起来前，先把这些加上，查询飞快)
 CREATE INDEX idx_posts_slug ON posts(slug);
@@ -130,11 +130,11 @@ CREATE INDEX idx_posts_status ON posts(status);
 CREATE INDEX idx_comments_post_id ON comments(post_id);
 ```
 
-##### 数据库触发器
+## 数据库触发器
 
 > 用于自动更新时间戳
 
-###### 更新函数
+#### 更新函数
 
 ```sql
 CREATE OR REPLACE FUNCTION update_modified_column()
@@ -146,7 +146,7 @@ END;
 $$ language 'plpgsql';
 ```
 
-###### 绑定触发器
+#### 绑定触发器
 
 ```sql
 -- 为 users 表绑定
@@ -169,7 +169,73 @@ CREATE TRIGGER update_posts_modtime
 
 -- 为 links 表绑定
 CREATE TRIGGER update_links_modtime
-    BEFORE UPDATE ON link
+    BEFORE UPDATE ON links
     FOR EACH ROW
     EXECUTE FUNCTION update_modified_column();
+```
+
+## 部署数据库
+
+> 如何在 `Ubuntu` 服务器安装 `PostgreSQl` 并且导入表呢?
+
+#### (1) 配置软件源
+
+```shell
+# 添加清华源
+echo "deb https://mirrors.tuna.tsinghua.edu.cn/postgresql/repos/apt/ noble-pgdg main" | sudo tee /etc/apt/sources.list.d/pgdg.list
+
+# 导入GPG密钥
+wget -qO - https://mirrors.tuna.tsinghua.edu.cn/postgresql/repos/apt/ACCC4CF8.asc | sudo apt-key add -
+```
+
+#### (2) 下载 PostgreSQl
+
+```shell
+# 更新包列表并安装
+sudo apt update && sudo apt install postgresql-16 postgresql-client-16
+
+# 启动PostgreSQL服务并设置开机自启
+sudo systemctl enable --now postgresql
+```
+
+#### (3) 数据库用户和权限配置
+
+```shell
+# 切换到postgres系统用户
+sudo -i -u postgres
+
+# 进入PostgreSQL交互终端
+psql
+```
+
+###### 创建数据库和超级用户
+
+```sql
+-- 1. 创建超级用户 lian (请将 '你的密码' 替换为你真实的密码)
+CREATE ROLE lian WITH LOGIN SUPERUSER PASSWORD '你的密码';
+
+-- 2. 创建数据库 yukilog
+CREATE DATABASE yukilog;
+
+-- 3. 将数据库 yukilog 的所有权赋予 lian
+ALTER DATABASE yukilog OWNER TO lian;
+
+-- 4. 退出 psql
+\q
+```
+
+###### 导入数据库
+
+```shell
+psql -U lian -d yukilog -f init_db.sql
+```
+
+```shell
+psql -U lian -d yukilog
+```
+
+```sql
+\dt
+\df
+\d posts
 ```

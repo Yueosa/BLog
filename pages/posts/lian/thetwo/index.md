@@ -391,6 +391,12 @@ host    all             all             127.0.0.1/32            md5
 host    all             all             ::1/128                 md5
 ```
 
+重启服务
+
+```shell
+sudo systemctl restart postgresql
+```
+
 **具体说明见 [数据库安全与网路配置详解](#数据库安全与网络配置详解)**
 
 #### (5) 导入数据库

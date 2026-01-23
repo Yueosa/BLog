@@ -51,6 +51,8 @@ cargo -V
 
 ## 📝 第二步：5 分钟起一个 Web 服务 (Axum)
 
+> 或者你也可以直接克隆源代码 [Yueosa的Github](https://github.com/Yueosa/Rust-Axum-Web-Backend)
+
 现在，我们要跨入 Web 后端的大门了
 
 1. **配置积木 (Cargo.toml)**

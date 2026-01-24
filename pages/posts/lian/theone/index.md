@@ -1,7 +1,7 @@
 ---
 title: YukiLog - 01
 subTitle: 从零开始的 CMS 之路
-date: 2026-01-22
+date: 2026-01-21
 updated: 2026-01-22
 cover: /cover/bapln.jpg
 toc: true

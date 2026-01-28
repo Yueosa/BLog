@@ -1,6 +1,6 @@
 ---
 title: 一个“玩具项目”的诞生
-subtitle: 将 LLM 当作函数后, 我终于认识了 Agent
+subTitle: 将 LLM 当作函数后, 我终于认识了 Agent
 date: 2026-01-27
 updated: 2026-01-27
 categories:
